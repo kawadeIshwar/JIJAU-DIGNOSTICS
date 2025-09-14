@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import ImageCarousel from '../ui/ImageCarousel'
-import { SimpleLogo } from '../ui/Logo'
+import Logo from '../assets/Logo.jpg'
 
 export default function Home(){
   const [bookingForm, setBookingForm] = useState({
@@ -44,94 +44,191 @@ export default function Home(){
   ]
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="shadow-lg sticky top-0 z-50" style={{background: 'linear-gradient(90deg, #7F55B1 0%, #6B46A3 100%)'}}>
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-purple-100">
+        {/* Header */}
+        <header className="shadow-xl sticky top-0 z-50 backdrop-blur-md border-b border-purple-200" style={{backgroundColor: '#642EAA'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between h-20">
             <div className="flex items-center">
               <div className="flex-shrink-0">
-                <SimpleLogo />
+                <img 
+                  src={Logo}  
+                  alt="JIJAU Pathology Laboratory" 
+                  className="h-20 w-auto"
+                />
               </div>
             </div>
             <nav className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-8">
-                <Link to="/" className="text-white hover:text-purple-200 px-3 py-2 text-sm font-medium transition-colors">Home</Link>
-                <Link to="/tests" className="text-white hover:text-purple-200 px-3 py-2 text-sm font-medium transition-colors">Tests</Link>
-                <Link to="/login" className="bg-white text-logo-vibrant hover:bg-purple-50 px-4 py-2 rounded-lg text-sm font-medium transition-colors">Login</Link>
+                <Link to="/" className="text-white hover:text-yellow-300 px-4 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white/20 rounded-lg">Home</Link>
+                <Link to="/tests" className="text-white hover:text-yellow-300 px-4 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white/20 rounded-lg">Tests</Link>
+                <Link to="/login" className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black hover:from-yellow-500 hover:to-orange-600 px-6 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">Login</Link>
               </div>
           </nav>
             <div className="md:hidden">
-              <Link to="/login" className="bg-white text-logo-vibrant px-3 py-2 rounded text-sm">Login</Link>
+              <Link to="/login" className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-4 py-2 rounded-lg text-sm font-semibold shadow-lg">Login</Link>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Hero Section with Sliding Images */}
-      <section className="relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <ImageCarousel />
+      {/* Hero Section */}
+      <section className="relative overflow-hidden" style={{background: 'linear-gradient(135deg, #642EAA 0%, #7F55B1 25%, #8B5CF6 50%, #A855F7 75%, #C084FC 100%)'}}>
+        <div className="absolute inset-0 bg-black/10"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left Side - Content */}
+            <div className="text-white space-y-8">
+              <div className="space-y-4">
+              
+                <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
+                  Your Health, 
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400"> Our Priority</span>
+                </h1>
+                <p className="text-xl text-purple-100 leading-relaxed">
+                  Get accurate diagnostic results from the comfort of your home. 
+                  Our certified lab technicians ensure precision, speed, and reliability.
+                </p>
+              </div>
+              
+              {/* Trust Indicators */}
+              <div className="grid grid-cols-3 gap-6 py-6">
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-yellow-400">99.8%</div>
+                  <div className="text-sm text-purple-200">Accuracy Rate</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-yellow-400">6hrs</div>
+                  <div className="text-sm text-purple-200">Report Delivery</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-yellow-400">24/7</div>
+                  <div className="text-sm text-purple-200">Support</div>
+                </div>
+              </div>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-8 py-4 rounded-xl font-bold text-lg hover:from-yellow-500 hover:to-orange-600 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
+                  Book Test Now
+                </button>
+                <button className="border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-purple-900 transition-all duration-300">
+                  View All Tests
+                </button>
+              </div>
+            </div>
+
+            {/* Right Side - Image Carousel */}
+            <div className="order-first lg:order-last">
+              <ImageCarousel />
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Booking Form */}
-      <section id="booking" className="bg-white py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-secondary-900 mb-4">Schedule Your Test Today</h2>
-            <p className="text-lg text-secondary-600">We are just a call away! Fill the form below and we'll contact you.</p>
+      <section id="booking" className="py-20 bg-gradient-to-br from-purple-50 via-white to-purple-100">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold mb-4" style={{backgroundColor: '#E8D5F2', color: '#642EAA'}}>
+              <span className="w-2 h-2 rounded-full mr-2" style={{backgroundColor: '#642EAA'}}></span>
+              Quick & Easy Booking
+            </div>
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+              Schedule Your Test Today
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Get professional diagnostic services at your doorstep. Our certified technicians will visit you within 2 hours of booking.
+            </p>
           </div>
           
-          <div className="rounded-2xl p-8 shadow-lg" style={{background: 'linear-gradient(90deg, #f0e6ff 0%, #e6d9ff 100%)'}}>
-            <form onSubmit={handleBookingSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-sm font-medium text-secondary-700 mb-2">Full Name *</label>
-                <input
-                  type="text"
-                  required
-                  value={bookingForm.name}
-                  onChange={(e) => setBookingForm({...bookingForm, name: e.target.value})}
-                  className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:border-transparent" style={{'--tw-ring-color': '#7F55B1'}} onFocus={(e) => e.target.style.setProperty('--tw-ring-color', '#7F55B1')}
-                  placeholder="Enter your full name"
-                />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left Side - Benefits */}
+            <div className="space-y-8">
+              <div className="space-y-6">
+                <h3 className="text-2xl font-bold text-gray-900">Why Choose Us?</h3>
+                <div className="space-y-4">
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full flex items-center justify-center">
+                      <span className="text-white text-sm font-bold">✓</span>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900">Home Sample Collection</h4>
+                      <p className="text-gray-600">Professional phlebotomists visit your home</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full flex items-center justify-center">
+                      <span className="text-white text-sm font-bold">✓</span>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900">Fast Results</h4>
+                      <p className="text-gray-600">Get reports within 6 hours online</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full flex items-center justify-center">
+                      <span className="text-white text-sm font-bold">✓</span>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900">Certified Lab</h4>
+                      <p className="text-gray-600">NABL accredited laboratory</p>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div>
-                <label className="block text-sm font-medium text-secondary-700 mb-2">Phone Number *</label>
-                <input
-                  type="tel"
-                  required
-                  value={bookingForm.phone}
-                  onChange={(e) => setBookingForm({...bookingForm, phone: e.target.value})}
-                  className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:border-transparent" style={{'--tw-ring-color': '#7F55B1'}} onFocus={(e) => e.target.style.setProperty('--tw-ring-color', '#7F55B1')}
-                  placeholder="Enter your phone number"
-                />
+              
+              {/* Trust Badges */}
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-white p-4 rounded-xl shadow-lg text-center">
+                  <div className="text-2xl font-bold" style={{color: '#642EAA'}}>50K+</div>
+                  <div className="text-sm text-gray-600">Happy Patients</div>
+                </div>
+                <div className="bg-white p-4 rounded-xl shadow-lg text-center">
+                  <div className="text-2xl font-bold" style={{color: '#642EAA'}}>99.8%</div>
+                  <div className="text-sm text-gray-600">Accuracy</div>
+                </div>
               </div>
-              <div>
-                <label className="block text-sm font-medium text-secondary-700 mb-2">City *</label>
-                <select
-                  required
-                  value={bookingForm.city}
-                  onChange={(e) => setBookingForm({...bookingForm, city: e.target.value})}
-                  className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:border-transparent" style={{'--tw-ring-color': '#7F55B1'}} onFocus={(e) => e.target.style.setProperty('--tw-ring-color', '#7F55B1')}
-                >
-                  <option value="">Select your city</option>
-                  <option value="mumbai">Mumbai</option>
-                  <option value="delhi">Delhi</option>
-                  <option value="bangalore">Bangalore</option>
-                  <option value="chennai">Chennai</option>
-                  <option value="hyderabad">Hyderabad</option>
-                  <option value="pune">Pune</option>
-                  <option value="kolkata">Kolkata</option>
-                </select>
+            </div>
+
+            {/* Right Side - Form */}
+            <div className="bg-white rounded-3xl p-8 shadow-2xl border border-purple-100">
+              <div className="mb-6">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Book Your Test</h3>
+                <p className="text-gray-600">Fill the form and we'll call you within 15 minutes</p>
               </div>
-              <div>
-                <label className="block text-sm font-medium text-secondary-700 mb-2">Test Type</label>
-                <select
-                  value={bookingForm.testType}
-                  onChange={(e) => setBookingForm({...bookingForm, testType: e.target.value})}
-                  className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:border-transparent" style={{'--tw-ring-color': '#7F55B1'}} onFocus={(e) => e.target.style.setProperty('--tw-ring-color', '#7F55B1')}
-                >
+              
+              <form onSubmit={handleBookingSubmit} className="space-y-6">
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">Full Name *</label>
+                  <input
+                    type="text"
+                    required
+                    value={bookingForm.name}
+                    onChange={(e) => setBookingForm({...bookingForm, name: e.target.value})}
+                    className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:border-purple-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white"
+                    placeholder="Enter your full name"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">Phone Number *</label>
+                  <input
+                    type="tel"
+                    required
+                    value={bookingForm.phone}
+                    onChange={(e) => setBookingForm({...bookingForm, phone: e.target.value})}
+                    className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:border-purple-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white"
+                    placeholder="Enter your phone number"
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">Test Type</label>
+                  <select
+                    value={bookingForm.testType}
+                    onChange={(e) => setBookingForm({...bookingForm, testType: e.target.value})}
+                    className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:border-purple-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white"
+                  >
                   <option value="">Select test type</option>
                   <option value="cbc">Complete Blood Count</option>
                   <option value="lft">Liver Function Test</option>
@@ -141,50 +238,54 @@ export default function Home(){
                   <option value="other">Other</option>
                 </select>
               </div>
-              <div className="md:col-span-2">
                 <button
                   type="submit"
-                  className="w-full text-white py-4 rounded-lg text-lg font-semibold transition-colors" style={{backgroundColor: '#7F55B1'}} onMouseEnter={(e) => e.target.style.backgroundColor = '#6B46A3'} onMouseLeave={(e) => e.target.style.backgroundColor = '#7F55B1'}
+                  className="w-full py-4 px-6 text-white rounded-xl font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  style={{backgroundColor: '#642EAA'}}
+                  onMouseEnter={(e) => e.target.style.backgroundColor = '#4A1F7A'}
+                  onMouseLeave={(e) => e.target.style.backgroundColor = '#642EAA'}
                 >
                   Request Call Back
                 </button>
-                <p className="text-sm text-secondary-500 mt-2 text-center">
+                <p className="text-sm text-gray-500 mt-2 text-center">
                   *All fields are mandatory. Home sample collection charges will be applicable.
                 </p>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Health Packages */}
-      <section className="py-16 relative overflow-hidden bg-purple-200" >
-        {/* Watermark */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white text-6xl font-bold">
-            JIJAU PATHOLOGY LABORATORY
-          </div>
-        </div>
-        
+      <section className="py-20 relative overflow-hidden bg-gradient-to-br from-purple-50 via-white to-indigo-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Health Packages</h2>
-            <p className="text-lg text-gray-700">Comprehensive health checkup packages at unbeatable prices</p>
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center px-6 py-3 rounded-full text-sm font-semibold mb-6" style={{backgroundColor: '#E8D5F2', color: '#642EAA'}}>
+              <span className="w-2 h-2 rounded-full mr-2" style={{backgroundColor: '#642EAA'}}></span>
+              Comprehensive Health Packages
+            </div>
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+              Complete Health Solutions
+            </h2>
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              Choose from our carefully designed health packages that offer complete diagnostic solutions at affordable prices. 
+              All packages include home sample collection and fast report delivery.
+            </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* JIJAU ACTIVE CARE */}
-            <div className="bg-white rounded-xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-300 h-full flex flex-col">
-              <div className="px-6 py-4" style={{backgroundColor: '#7F55B1'}}>
+            <div className="bg-white rounded-2xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-500 hover:shadow-3xl border border-purple-100 h-full flex flex-col group">
+              <div className="px-6 py-6" style={{backgroundColor: '#642EAA'}}>
                 <h3 className="text-xl font-bold text-white uppercase">JIJAU ACTIVE CARE</h3>
-                <p className="text-white text-sm mt-1">72 Test</p>
+                <p className="text-purple-100 text-sm mt-1">72 Comprehensive Tests</p>
               </div>
               
               <div className="p-6 bg-gray-50 flex flex-col flex-grow">
                 <div className="text-center mb-6">
                   <div className="text-gray-600 line-through mb-2">MRP: ₹3,180/-</div>
                   <div className="relative">
-                    <div className="text-white px-6 py-3 rounded-full shadow-lg" style={{backgroundColor: '#7F55B1', animation: 'wiggle-rotate 2s ease-in-out infinite'}}>
+                    <div className="text-white px-6 py-3 rounded-full shadow-lg" style={{backgroundColor: '#642EAA', animation: 'wiggle-rotate 3s ease-in-out infinite'}}>
                       <span className="text-yellow-300 font-bold text-lg">Offer Price ₹999/-</span>
                     </div>
                   </div>
@@ -192,48 +293,48 @@ export default function Home(){
                 
                 <div className="space-y-2 mb-6 flex-grow">
                   <div className="flex items-center text-sm text-gray-700">
-                    <span className="mr-2" style={{color: '#7F55B1'}}>→</span>
+                    <span className="mr-2" style={{color: '#642EAA'}}>→</span>
                     COMPLETE BLOOD COUNT+PBS
                   </div>
                   <div className="flex items-center text-sm text-gray-700">
-                    <span className="mr-2" style={{color: '#7F55B1'}}>→</span>
+                    <span className="mr-2" style={{color: '#642EAA'}}>→</span>
                     ESR ERYTHROCYTE SEDIMENTATION RATE
                   </div>
                   <div className="flex items-center text-sm text-gray-700">
-                    <span className="mr-2" style={{color: '#7F55B1'}}>→</span>
+                    <span className="mr-2" style={{color: '#642EAA'}}>→</span>
                     BLOOD SUGAR FASTING & PP (BSF & PP)
                   </div>
                   <div className="flex items-center text-sm text-gray-700">
-                    <span className="mr-2" style={{color: '#7F55B1'}}>→</span>
+                    <span className="mr-2" style={{color: '#642EAA'}}>→</span>
                     RENAL FUNCTION TEST (RFT)
                   </div>
                   <div className="flex items-center text-sm text-gray-700">
-                    <span className="mr-2" style={{color: '#7F55B1'}}>→</span>
+                    <span className="mr-2" style={{color: '#642EAA'}}>→</span>
                     LIVER FUNCTION TEST (LFT)
                   </div>
                   <div className="flex items-center text-sm text-gray-700">
-                    <span className="mr-2" style={{color: '#7F55B1'}}>→</span>
+                    <span className="mr-2" style={{color: '#642EAA'}}>→</span>
                     LIPID PROFILE
                   </div>
                   <div className="flex items-center text-sm text-gray-700">
-                    <span className="mr-2" style={{color: '#7F55B1'}}>→</span>
+                    <span className="mr-2" style={{color: '#642EAA'}}>→</span>
                     TOTAL CALCIUM
                   </div>
                   <div className="flex items-center text-sm text-gray-700">
-                    <span className="mr-2" style={{color: '#7F55B1'}}>→</span>
+                    <span className="mr-2" style={{color: '#642EAA'}}>→</span>
                     HbA1c: GLYCOSYLATED HEMOGLOBIN BY HPLC
                   </div>
                   <div className="flex items-center text-sm text-gray-700">
-                    <span className="mr-2" style={{color: '#7F55B1'}}>→</span>
+                    <span className="mr-2" style={{color: '#642EAA'}}>→</span>
                     THYROID STIMULATING HORMONE (TSH)-SERUM
                   </div>
                   <div className="flex items-center text-sm text-gray-700">
-                    <span className="mr-2" style={{color: '#7F55B1'}}>→</span>
+                    <span className="mr-2" style={{color: '#642EAA'}}>→</span>
                     URINE ROUTINE
                   </div>
                 </div>
                 
-                <button className="w-full text-white py-3 rounded-lg font-semibold transition-colors" style={{backgroundColor: '#7F55B1'}} onMouseEnter={(e) => e.target.style.backgroundColor = '#6B46A3'} onMouseLeave={(e) => e.target.style.backgroundColor = '#7F55B1'}>
+                <button className="w-full text-white py-3 rounded-lg font-semibold transition-colors" style={{backgroundColor: '#642EAA'}} onMouseEnter={(e) => e.target.style.backgroundColor = '#4A1F7A'} onMouseLeave={(e) => e.target.style.backgroundColor = '#642EAA'}>
                   Book Package
                 </button>
               </div>
@@ -241,10 +342,10 @@ export default function Home(){
 
             {/* JIJAU ACTIVE CARE + */}
             <div className="bg-white rounded-xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-300 relative h-full flex flex-col">
-              <div className="absolute top-2 right-2 text-white px-2 py-1 rounded text-xs font-bold bg-green-500">
+              <div className="absolute top-2 right-2 text-white px-2 py-1 rounded text-xs font-bold bg-green-500 anima">
                 MOST POPULAR
               </div>
-              <div className="px-6 py-4" style={{backgroundColor: '#7F55B1'}}>
+              <div className="px-6 py-4" style={{backgroundColor: '#642EAA'}}>
                 <h3 className="text-xl font-bold text-white uppercase">JIJAU ACTIVE CARE +</h3>
                 <p className="text-white text-sm mt-1">95 Test</p>
               </div>
@@ -253,7 +354,7 @@ export default function Home(){
                 <div className="text-center mb-6">
                   <div className="text-gray-600 line-through mb-2">MRP: ₹4,930/-</div>
                   <div className="relative">
-                    <div className="text-white px-6 py-3 rounded-full shadow-lg" style={{backgroundColor: '#7F55B1', animation: 'wiggle-rotate 2s ease-in-out infinite'}}>
+                    <div className="text-white px-6 py-3 rounded-full shadow-lg" style={{backgroundColor: '#642EAA', animation: 'wiggle-rotate 3s ease-in-out infinite'}}>
                       <span className="text-yellow-300 font-bold text-lg">Offer Price ₹1,799/-</span>
                     </div>
                   </div>
@@ -261,56 +362,56 @@ export default function Home(){
                 
                 <div className="space-y-2 mb-6 flex-grow">
                   <div className="flex items-center text-sm text-gray-700">
-                    <span className="mr-2" style={{color: '#7F55B1'}}>→</span>
+                    <span className="mr-2" style={{color: '#642EAA'}}>→</span>
                     COMPLETE BLOOD COUNT +PBS
                   </div>
                   <div className="flex items-center text-sm text-gray-700">
-                    <span className="mr-2" style={{color: '#7F55B1'}}>→</span>
+                    <span className="mr-2" style={{color: '#642EAA'}}>→</span>
                     ESR-ERYTHROCYTE SEDIMENTATION RATE
                   </div>
                   <div className="flex items-center text-sm text-gray-700">
-                    <span className="mr-2" style={{color: '#7F55B1'}}>→</span>
+                    <span className="mr-2" style={{color: '#642EAA'}}>→</span>
                     BLOOD SUGAR FASTING & PP (BSF & PP)
                   </div>
                   <div className="flex items-center text-sm text-gray-700">
-                    <span className="mr-2" style={{color: '#7F55B1'}}>→</span>
+                    <span className="mr-2" style={{color: '#642EAA'}}>→</span>
                     RENAL FUNCTION TEST (RFT)
                   </div>
                   <div className="flex items-center text-sm text-gray-700">
-                    <span className="mr-2" style={{color: '#7F55B1'}}>→</span>
+                    <span className="mr-2" style={{color: '#642EAA'}}>→</span>
                     LIVER FUNCTION TEST (LFT)
                   </div>
                   <div className="flex items-center text-sm text-gray-700">
-                    <span className="mr-2" style={{color: '#7F55B1'}}>→</span>
+                    <span className="mr-2" style={{color: '#642EAA'}}>→</span>
                     LIPID PROFILE
                   </div>
                   <div className="flex items-center text-sm text-gray-700">
-                    <span className="mr-2" style={{color: '#7F55B1'}}>→</span>
+                    <span className="mr-2" style={{color: '#642EAA'}}>→</span>
                     TOTAL CALCIUM
                   </div>
                   <div className="flex items-center text-sm text-gray-700">
-                    <span className="mr-2" style={{color: '#7F55B1'}}>→</span>
+                    <span className="mr-2" style={{color: '#642EAA'}}>→</span>
                     HbA1c: GLYCOSYLATED HEMOGLOBIN BY HPLC
                   </div>
                   <div className="flex items-center text-sm text-gray-700">
-                    <span className="mr-2" style={{color: '#7F55B1'}}>→</span>
+                    <span className="mr-2" style={{color: '#642EAA'}}>→</span>
                     Thyroid Function Test (TFT)
                   </div>
                   <div className="flex items-center text-sm text-gray-700">
-                    <span className="mr-2" style={{color: '#7F55B1'}}>→</span>
+                    <span className="mr-2" style={{color: '#642EAA'}}>→</span>
                     VITAMIN B12 - SERUM
                   </div>
                   <div className="flex items-center text-sm text-gray-700">
-                    <span className="mr-2" style={{color: '#7F55B1'}}>→</span>
+                    <span className="mr-2" style={{color: '#642EAA'}}>→</span>
                     VITAMIN D-TOTAL (25-OH-VIT D)-SERUM
                   </div>
                   <div className="flex items-center text-sm text-gray-700">
-                    <span className="mr-2" style={{color: '#7F55B1'}}>→</span>
+                    <span className="mr-2" style={{color: '#642EAA'}}>→</span>
                     URINE ROUTINE
                   </div>
                 </div>
                 
-                <button className="w-full text-white py-3 rounded-lg font-semibold transition-colors" style={{backgroundColor: '#7F55B1'}} onMouseEnter={(e) => e.target.style.backgroundColor = '#6B46A3'} onMouseLeave={(e) => e.target.style.backgroundColor = '#7F55B1'}>
+                <button className="w-full text-white py-3 rounded-lg font-semibold transition-colors" style={{backgroundColor: '#642EAA'}} onMouseEnter={(e) => e.target.style.backgroundColor = '#4A1F7A'} onMouseLeave={(e) => e.target.style.backgroundColor = '#642EAA'}>
                   Book Package
                 </button>
               </div>
@@ -318,73 +419,73 @@ export default function Home(){
 
             {/* JIJAU WOMEN'S CARE */}
             <div className="bg-white rounded-xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-300 h-full flex flex-col">
-              <div className="px-6 py-4" style={{backgroundColor: '#7F55B1'}}>
+              <div className="px-6 py-4" style={{backgroundColor: '#642EAA'}}>
                 <h3 className="text-xl font-bold text-white uppercase">JIJAU WOMEN'S CARE</h3>
                 <p className="text-white text-sm mt-1">157 Test</p>
               </div>
               
               <div className="p-6 bg-gray-50 flex flex-col flex-grow">
                 <div className="text-center mb-6">
-                  <div className="text-gray-600 line-through mb-2">MRP: ₹2,400/-</div>
+                  <div className="text-gray-600 line-through mb-2">MRP: ₹5,730/-</div>
                   <div className="relative">
-                    <div className="text-white px-6 py-3 rounded-full shadow-lg" style={{backgroundColor: '#7F55B1', animation: 'wiggle-rotate 2s ease-in-out infinite'}}>
-                      <span className="text-yellow-300 font-bold text-lg">Offer Price ₹1,730/-</span>
+                    <div className="text-white px-6 py-3 rounded-full shadow-lg" style={{backgroundColor: '#642EAA', animation: 'wiggle-rotate 3s ease-in-out infinite'}}>
+                      <span className="text-yellow-300 font-bold text-lg">Offer Price ₹2,400/-</span>
                     </div>
                   </div>
                 </div>
                  
                 <div className="space-y-2 mb-6 flex-grow">
                   <div className="flex items-center text-sm text-gray-700">
-                    <span className="mr-2" style={{color: '#7F55B1'}}>→</span>
+                    <span className="mr-2" style={{color: '#642EAA'}}>→</span>
                     BLOOD SUGAR FASTING & PP (BSF & PP)
                   </div>
                   <div className="flex items-center text-sm text-gray-700">
-                    <span className="mr-2" style={{color: '#7F55B1'}}>→</span>
+                    <span className="mr-2" style={{color: '#642EAA'}}>→</span>
                     HbA1c: GLYCOSYLATED HEMOGLOBIN BY HPLC
                   </div>
                   <div className="flex items-center text-sm text-gray-700">
-                    <span className="mr-2" style={{color: '#7F55B1'}}>→</span>
+                    <span className="mr-2" style={{color: '#642EAA'}}>→</span>
                     RENAL FUNCTION TEST (RFT)
                   </div>
                   <div className="flex items-center text-sm text-gray-700">
-                    <span className="mr-2" style={{color: '#7F55B1'}}>→</span>
+                    <span className="mr-2" style={{color: '#642EAA'}}>→</span>
                     LIVER FUNCTION TEST (LFT)
                   </div>
                   <div className="flex items-center text-sm text-gray-700">
-                    <span className="mr-2" style={{color: '#7F55B1'}}>→</span>
+                    <span className="mr-2" style={{color: '#642EAA'}}>→</span>
                     LIPID PROFILE
                   </div>
                   <div className="flex items-center text-sm text-gray-700">
-                    <span className="mr-2" style={{color: '#7F55B1'}}>→</span>
+                    <span className="mr-2" style={{color: '#642EAA'}}>→</span>
                     TOTAL CALCIUM
                   </div>
                   <div className="flex items-center text-sm text-gray-700">
-                    <span className="mr-2" style={{color: '#7F55B1'}}>→</span>
+                    <span className="mr-2" style={{color: '#642EAA'}}>→</span>
                     IRON STUDIES
                   </div>
                   <div className="flex items-center text-sm text-gray-700">
-                    <span className="mr-2" style={{color: '#7F55B1'}}>→</span>
+                    <span className="mr-2" style={{color: '#642EAA'}}>→</span>
                     Thyroid Function Test (TFT)
                   </div>
                   <div className="flex items-center text-sm text-gray-700">
-                    <span className="mr-2" style={{color: '#7F55B1'}}>→</span>
+                    <span className="mr-2" style={{color: '#642EAA'}}>→</span>
                     FSH (FOLLICLE STIMULATING HORMONE)-SERUM
                   </div>
                   <div className="flex items-center text-sm text-gray-700">
-                    <span className="mr-2" style={{color: '#7F55B1'}}>→</span>
+                    <span className="mr-2" style={{color: '#642EAA'}}>→</span>
                     LH (LEUTNISING HRMONE)-SERUM
                   </div>
                   <div className="flex items-center text-sm text-gray-700">
-                    <span className="mr-2" style={{color: '#7F55B1'}}>→</span>
+                    <span className="mr-2" style={{color: '#642EAA'}}>→</span>
                     PROLACTIN-SERUM
                   </div>
                   <div className="flex items-center text-sm text-gray-700">
-                    <span className="mr-2" style={{color: '#7F55B1'}}>→</span>
+                    <span className="mr-2" style={{color: '#642EAA'}}>→</span>
                     VITAMIN B12 + VITAMIN D.TOTAL - SERUM
                   </div>
                 </div>
                 
-                <button className="w-full text-white py-3 rounded-lg font-semibold transition-colors" style={{backgroundColor: '#7F55B1'}} onMouseEnter={(e) => e.target.style.backgroundColor = '#6B46A3'} onMouseLeave={(e) => e.target.style.backgroundColor = '#7F55B1'}>
+                <button className="w-full text-white py-3 rounded-lg font-semibold transition-colors" style={{backgroundColor: '#642EAA'}} onMouseEnter={(e) => e.target.style.backgroundColor = '#4A1F7A'} onMouseLeave={(e) => e.target.style.backgroundColor = '#642EAA'}>
                   Book Package
                 </button>
               </div>
@@ -392,6 +493,8 @@ export default function Home(){
           </div>
         </div>
       </section>
+
+    
 
       {/* Diagnostic Tests Overview */}
       <section className="py-16 bg-white">
@@ -578,19 +681,19 @@ export default function Home(){
         </section>
 
       {/* Footer */}
-      <footer className="bg-secondary-900 text-white py-12">
+      <footer className="text-white py-16" style={{background: 'linear-gradient(135deg, #642EAA 0%, #4A1F7A 50%, #2D1B69 100%)'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
               <h3 className="text-xl font-bold mb-4">JIJAU DIAGNOSTICS</h3>
               <p className="text-secondary-300 mb-4">Your trusted partner for accurate and reliable diagnostic services.</p>
               <div className="flex space-x-4">
-                <div className="p-2 rounded" style={{backgroundColor: '#7F55B1'}}>
+                <div className="p-2 rounded" style={{backgroundColor: '#642EAA'}}>
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
                   </svg>
                 </div>
-                <div className="p-2 rounded" style={{backgroundColor: '#7F55B1'}}>
+                <div className="p-2 rounded" style={{backgroundColor: '#642EAA'}}>
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                   </svg>

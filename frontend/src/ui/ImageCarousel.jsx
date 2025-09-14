@@ -9,7 +9,7 @@ export default function ImageCarousel() {
       title: "Home Sample Collection",
       subtitle: "Get Your Tests Done From The Comfort Of Your Home",
       description: "Our skilled phlebotomists visit your home with complete hygiene protocols",
-      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      image: "https://images.unsplash.com/photo-1581594549595-35f6edc7b762?q=100&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       buttonText: "Book Now",
       buttonLink: "#booking"
     },
@@ -18,7 +18,7 @@ export default function ImageCarousel() {
       title: "Accurate Diagnostics",
       subtitle: "Trusted Lab Results You Can Rely On",
       description: "State-of-the-art equipment and certified technicians ensure accurate results",
-      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      image: "https://plus.unsplash.com/premium_photo-1663045591914-2203150edf52?w=1200&auto=format&fit=crop&q=100&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cGF0aG9sb2d5JTIwbGFifGVufDB8fDB8fHww",
       buttonText: "View Tests",
       buttonLink: "/tests"
     },
@@ -27,7 +27,7 @@ export default function ImageCarousel() {
       title: "Quick Reports",
       subtitle: "Fast Results Within 6 Hours",
       description: "Get your test reports online quickly and securely",
-      image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      image: "https://images.unsplash.com/photo-1619691249147-c5689d88016b?w=1200&auto=format&fit=crop&q=100&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8ZGlhZ25vc3RpY3xlbnwwfHwwfHx8MA%3D%3D",
       buttonText: "Learn More",
       buttonLink: "#features"
     }
@@ -54,7 +54,7 @@ export default function ImageCarousel() {
   }
 
   return (
-    <div className="relative w-full h-[500px] md:h-[600px] overflow-hidden rounded-2xl shadow-2xl">
+    <div className="relative w-full h-[300px] md:h-[400px] overflow-hidden rounded-2xl shadow-2xl bg-white">
       {/* Slides */}
       <div className="relative w-full h-full">
         {slides.map((slide, index) => (
@@ -66,7 +66,7 @@ export default function ImageCarousel() {
           >
             {/* Background Image */}
             <div 
-              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              className="absolute inset-0 bg-contain bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${slide.image})` }}
             >
               {/* Overlay */}
