@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import ImageCarousel from '../ui/ImageCarousel'
-import Logo from '../assets/Logo.jpg'
+import SlidingText from '../ui/SlidingText'
+import Logo from '../assets/Logo.png'
 
 export default function Home(){
   const [bookingForm, setBookingForm] = useState({
@@ -46,7 +47,7 @@ export default function Home(){
   return (
       <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-purple-100">
         {/* Header */}
-        <header className="shadow-xl sticky top-0 z-50 backdrop-blur-md border-b border-purple-200" style={{backgroundColor: '#642EAA'}}>
+        <header className="shadow-2xl sticky top-0 z-50 backdrop-blur-md border-b border-purple-200" style={{backgroundColor: '#9929EA', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.1)'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             <div className="flex items-center">
@@ -75,53 +76,42 @@ export default function Home(){
       {/* Hero Section */}
       <section className="relative overflow-hidden" style={{background: 'linear-gradient(135deg, #642EAA 0%, #7F55B1 25%, #8B5CF6 50%, #A855F7 75%, #C084FC 100%)'}}>
         <div className="absolute inset-0 bg-black/10"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left Side - Content */}
-            <div className="text-white space-y-8">
-              <div className="space-y-4">
-              
-                <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
-                  Your Health, 
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400"> Our Priority</span>
-                </h1>
-                <p className="text-xl text-purple-100 leading-relaxed">
-                  Get accurate diagnostic results from the comfort of your home. 
-                  Our certified lab technicians ensure precision, speed, and reliability.
-                </p>
-              </div>
-              
-              {/* Trust Indicators */}
-              <div className="grid grid-cols-3 gap-6 py-6">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-yellow-400">99.8%</div>
-                  <div className="text-sm text-purple-200">Accuracy Rate</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-yellow-400">6hrs</div>
-                  <div className="text-sm text-purple-200">Report Delivery</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-yellow-400">24/7</div>
-                  <div className="text-sm text-purple-200">Support</div>
-                </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          {/* Top Center - Main Heading */}
+          <div className="text-center mb-8">
+            <h1 className="text-4xl lg:text-6xl font-bold leading-tight text-white mb-3">
+              Your Health, 
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400"> Our Priority</span>
+            </h1>
+            <p className="text-xl text-purple-100 leading-relaxed max-w-4xl mx-auto">
+              Get accurate diagnostic results from the comfort of your home. 
+              Our certified lab technicians ensure precision, speed, and reliability.
+            </p>
+          </div>
+
+          {/* Main Content Grid */}
+          <div className="bg-white rounded-2xl shadow-2xl p-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+              {/* Left Side - Image Carousel */}
+              <div className="order-first">
+                <ImageCarousel />
               </div>
 
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-8 py-4 rounded-xl font-bold text-lg hover:from-yellow-500 hover:to-orange-600 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
-                  Book Test Now
-                </button>
-                <button className="border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-purple-900 transition-all duration-300">
-                  View All Tests
-                </button>
+              {/* Right Side - Sliding Text Content */}
+              <div className="order-last lg:order-last">
+                <SlidingText />
               </div>
             </div>
+          </div>
 
-            {/* Right Side - Image Carousel */}
-            <div className="order-first lg:order-last">
-              <ImageCarousel />
-            </div>
+          {/* Bottom Center - CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-16">
+            <button className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-8 py-4 rounded-xl font-bold text-lg hover:from-yellow-500 hover:to-orange-600 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
+              Book Test Now
+            </button>
+            <button className="border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-purple-900 transition-all duration-300">
+              View All Tests
+            </button>
           </div>
         </div>
       </section>
@@ -171,8 +161,8 @@ export default function Home(){
                       <span className="text-white text-sm font-bold">✓</span>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900">Certified Lab</h4>
-                      <p className="text-gray-600">NABL accredited laboratory</p>
+                      <h4 className="font-semibold text-gray-900">Fully Automated Lab</h4>
+                      <p className="text-gray-600">High Quality controls and calibration(biorad & randox)</p>
                     </div>
                   </div>
                 </div>
@@ -592,7 +582,7 @@ export default function Home(){
       <section id="features" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-secondary-900 mb-4">Why Choose JIJAU Diagnostics?</h2>
+            <h2 className="text-3xl font-bold text-secondary-900 mb-4">Why Choose JIJAU Pathology Laboratory?</h2>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -685,7 +675,7 @@ export default function Home(){
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
-              <h3 className="text-xl font-bold mb-4">JIJAU DIAGNOSTICS</h3>
+              <h3 className="text-xl font-bold mb-4">JIJAU PATHOLOGY LABORATORY</h3>
               <p className="text-secondary-300 mb-4">Your trusted partner for accurate and reliable diagnostic services.</p>
               <div className="flex space-x-4">
                 <div className="p-2 rounded" style={{backgroundColor: '#642EAA'}}>
