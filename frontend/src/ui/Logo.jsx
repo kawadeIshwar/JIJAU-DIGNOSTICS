@@ -38,7 +38,7 @@ export default function Logo({ className = "" }) {
 // Alternative simpler logo version
 export function SimpleLogo({ className = "" }) {
   return (
-    <div className={`flex items-center space-x-2 ${className}`}>
+    <div className={`flex items-center space-x-2 border border-white rounded-lg px-3 py-2 ${className}`}>
       {/* Medical Cross Icon */}
       <div className="relative w-8 h-8">
         <div className="absolute inset-0 flex items-center justify-center">

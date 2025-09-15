@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import axios from 'axios'
 import { useNavigate, Link } from 'react-router-dom'
-import { SimpleLogo } from '../ui/Logo'
+import Logo from '../assets/Logo.png'
 
 export default function Login(){
   const [email, setEmail] = useState('');
@@ -33,7 +33,7 @@ export default function Login(){
             <div className="flex items-center">
               <div className="flex-shrink-0">
                 <Link to="/">
-                  <SimpleLogo />
+                  <img src={Logo} alt="JIJAU Pathology Laboratory" className="h-16 w-auto"/>
                 </Link>
               </div>
             </div>

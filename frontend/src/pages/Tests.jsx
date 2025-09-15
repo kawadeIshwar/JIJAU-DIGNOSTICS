@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import { SimpleLogo } from '../ui/Logo'
+import Logo from '../assets/Logo.png'
 
 export default function Tests(){
   const [tests, setTests] = useState([]);
@@ -84,12 +84,16 @@ export default function Tests(){
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-secondary-50">
       {/* Header */}
-      <header className="bg-gradient-to-r from-logo-vibrant to-logo-dark shadow-lg sticky top-0 z-50">
+      <header className="bg-[#662fa9] shadow-lg sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between h-20">
             <div className="flex items-center">
               <div className="flex-shrink-0">
-                <SimpleLogo />
+                <img 
+                  src={Logo}  
+                  alt="JIJAU Pathology Laboratory" 
+                  className="h-20 w-auto"
+                />
               </div>
             </div>
             <nav className="hidden md:block">

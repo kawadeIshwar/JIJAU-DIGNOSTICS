@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import ImageCarousel from '../ui/ImageCarousel'
 import SlidingText from '../ui/SlidingText'
@@ -11,6 +11,12 @@ export default function Home(){
     city: '',
     testType: ''
   })
+  const [showMorePackages, setShowMorePackages] = useState(false)
+  const packagesTopRef = useRef(null)
+  const [showMoreHematology, setShowMoreHematology] = useState(false)
+  const [showMoreBiochemistry, setShowMoreBiochemistry] = useState(false)
+  const [showMoreSerology, setShowMoreSerology] = useState(false)
+  const [showMoreHistopathology, setShowMoreHistopathology] = useState(false)
 
   // Add custom CSS for wiggle rotation animation
   React.useEffect(() => {
@@ -44,10 +50,185 @@ export default function Home(){
     { name: 'Lipid Profile', price: '₹650', code: 'LIP001' }
   ]
 
+  const hematologyTests = [
+    {
+      name: 'Complete Blood Count (CBC)',
+      desc: 'Measures red blood cells, white blood cells, hemoglobin, hematocrit, and platelets to detect anemia, infections, and blood disorders.',
+      price: '₹20'
+    },
+    {
+      name: 'Blood Smear',
+      desc: 'Examines blood cells under a microscope to identify abnormalities in shape, size, or number.',
+      price: '₹15'
+    },
+    {
+      name: 'Erythrocyte Sedimentation Rate (ESR)',
+      desc: 'Measures the rate at which red blood cells settle; used to detect inflammation or infections.',
+      price: '₹18'
+    },
+    {
+      name: 'Prothrombin Time (PT) and INR',
+      desc: 'Assesses blood clotting time to monitor bleeding or clotting disorders.',
+      price: '₹22'
+    },
+    {
+      name: 'Activated Partial Thromboplastin Time (aPTT)',
+      desc: 'Checks for clotting disorders and monitors heparin therapy.',
+      price: '₹18'
+    },
+    {
+      name: 'Reticulocyte Count',
+      desc: 'Measures immature red blood cells to evaluate bone marrow function and anemia.',
+      price: '₹20'
+    },
+    {
+      name: 'Hemoglobin Electrophoresis',
+      desc: 'Identifies abnormal hemoglobin types, such as in sickle cell anemia or thalassemia.',
+      price: '₹—'
+    },
+    {
+      name: 'Iron Studies (Serum Iron, Ferritin, TIBC)',
+      desc: 'Evaluates iron deficiency or overload in conditions like anemia.',
+      price: '₹—'
+    },
+    {
+      name: 'D-Dimer',
+      desc: 'Detects blood clots, such as deep vein thrombosis or pulmonary embolism.',
+      price: '₹—'
+    },
+    {
+      name: 'Bone Marrow Aspiration/Biopsy',
+      desc: 'Examines bone marrow for leukemia, anemia, or other blood disorders.',
+      price: '₹—'
+    },
+    {
+      name: 'Vitamin B12 and Folate Levels',
+      desc: 'Detects deficiencies causing anemia or nerve damage.',
+      price: '₹—'
+    },
+    {
+      name: 'Flow Cytometry',
+      desc: 'Analyzes blood or bone marrow cells for leukemia, lymphoma, and immune disorders.',
+      price: '₹—'
+    },
+    {
+      name: 'Lactate Dehydrogenase (LDH)',
+      desc: 'Indicates cell damage or hemolysis.',
+      price: '₹—'
+    },
+    {
+      name: 'G6PD Test',
+      desc: 'Diagnoses glucose-6-phosphate dehydrogenase deficiency.',
+      price: '₹—'
+    },
+    {
+      name: 'Coombs Test (Direct/Indirect)',
+      desc: 'Detects antibodies that attack red blood cells; useful in autoimmune hemolytic anemia.',
+      price: '₹—'
+    },
+    {
+      name: 'JAK2 Mutation Test',
+      desc: 'Identifies genetic mutations linked to myeloproliferative disorders.',
+      price: '₹—'
+    }
+  ]
+
+  const biochemistryTests = [
+    { name: 'Blood Glucose Test', desc: 'Measures blood sugar levels to diagnose diabetes and monitor its management.', price: '₹—' },
+    { name: 'Liver Function Tests (LFTs)', desc: 'ALT, AST, ALP, bilirubin, albumin to evaluate liver health.', price: '₹—' },
+    { name: 'Renal Function Tests (RFTs)', desc: 'Creatinine, BUN, and electrolytes to assess kidney function.', price: '₹—' },
+    { name: 'Lipid Profile', desc: 'Cholesterol, triglycerides, LDL, HDL for cardiac risk assessment.', price: '₹—' },
+    { name: 'Electrolyte Panel', desc: 'Sodium, potassium, chloride, bicarbonate for fluid/electrolyte balance.', price: '₹—' },
+    { name: 'Serum Proteins (Albumin and Globulin)', desc: 'Assesses nutritional status, liver function, and immune response.', price: '₹—' },
+    { name: 'Thyroid Function Tests (TFTs)', desc: 'T3, T4, and TSH to diagnose and monitor thyroid disorders.', price: '₹—' },
+    { name: 'Uric Acid', desc: 'Helps diagnose gout or kidney stones.', price: '₹—' },
+    { name: 'Calcium Test', desc: 'Checks calcium for bone health and parathyroid function.', price: '₹—' },
+    { name: 'Phosphorus', desc: 'Evaluates phosphorus for bone and kidney function.', price: '₹—' },
+    { name: 'Creatine Kinase (CK)', desc: 'Detects muscle damage or heart disease.', price: '₹—' },
+    { name: 'C-Reactive Protein (CRP)', desc: 'Marker of inflammation in infections or autoimmune disease.', price: '₹—' },
+    { name: 'Alkaline Phosphatase (ALP)', desc: 'Indicates liver or bone disorders.', price: '₹—' },
+    { name: 'Amylase and Lipase', desc: 'Pancreatic enzymes to diagnose pancreatitis.', price: '₹—' },
+    { name: 'Serum Iron and Ferritin', desc: 'Assesses iron stores and iron-deficiency anemia.', price: '₹—' },
+    { name: 'Vitamin D and Vitamin B12', desc: 'Detects deficiencies affecting bone, nerve, and RBC production.', price: '₹—' },
+    { name: 'HbA1c (Glycated Hemoglobin)', desc: 'Long-term overview of blood sugar control in diabetes.', price: '₹—' },
+    { name: 'Lactate Dehydrogenase (LDH)', desc: 'Indicates tissue damage or systemic diseases.', price: '₹—' },
+    { name: 'Bilirubin Test', desc: 'Measures bilirubin to diagnose jaundice or liver dysfunction.', price: '₹—' },
+    { name: 'Hormonal Assays', desc: 'Estrogen, testosterone, prolactin, cortisol for endocrine function.', price: '₹—' }
+  ]
+
+  const serologyTests = [
+    { name: 'Widal Test', desc: 'Detects antibodies against Salmonella typhi for typhoid diagnosis.', price: '₹—' },
+    { name: 'VDRL Test', desc: 'Screens for syphilis by detecting antibodies in blood.', price: '₹—' },
+    { name: 'ASO (Antistreptolysin O) Test', desc: 'Detects antibodies to streptococcal infections; rheumatic fever risk.', price: '₹—' },
+    { name: 'Rheumatoid Factor (RF)', desc: 'Detects RF antibodies; helps diagnose rheumatoid arthritis.', price: '₹—' },
+    { name: 'CRP (C-Reactive Protein)', desc: 'Identifies inflammation or infection in the body.', price: '₹—' },
+    { name: 'Rapid Plasma Reagin (RPR)', desc: 'An alternate screening test for syphilis.', price: '₹—' },
+    { name: 'HIV Antibody Test', desc: 'Detects antibodies against HIV.', price: '₹—' },
+    { name: 'HBsAg', desc: 'Detects hepatitis B surface antigen for hepatitis B infection.', price: '₹—' },
+    { name: 'Anti-HCV Antibody', desc: 'Identifies antibodies against hepatitis C virus.', price: '₹—' },
+    { name: 'Dengue Serology', desc: 'IgM/IgG antibodies or NS1 antigen for dengue diagnosis.', price: '₹—' },
+    { name: 'Malaria Antigen', desc: 'Rapid detection of Plasmodium species.', price: '₹—' },
+    { name: 'Leptospirosis Test', desc: 'Detects antibodies against Leptospira bacteria.', price: '₹—' },
+    { name: 'Tuberculosis (TB) Tests', desc: 'Mantoux skin test or IGRA (TB blood test).', price: '₹—' },
+    { name: 'Anti-Nuclear Antibody (ANA)', desc: 'Autoantibodies used in diagnosing autoimmune diseases.', price: '₹—' },
+    { name: 'TORCH Panel', desc: 'Screens infections in pregnancy: Toxoplasma, Rubella, CMV, HSV.', price: '₹—' },
+    { name: 'Covid-19 Antibody', desc: 'Detects antibodies indicating prior exposure to SARS-CoV-2.', price: '₹—' },
+    { name: 'Brucella Antibody', desc: 'Identifies antibodies for brucellosis.', price: '₹—' },
+    { name: 'Epstein-Barr Virus (EBV) Test', desc: 'Antibodies to diagnose infectious mononucleosis.', price: '₹—' },
+    { name: 'Helicobacter pylori Antibody', desc: 'Screens for H. pylori linked to peptic ulcers.', price: '₹—' },
+    { name: 'Scrub Typhus Test', desc: 'Detects antibodies to Orientia tsutsugamushi.', price: '₹—' }
+  ]
+
+  const clinicalPathologyTests = [
+    { name: 'Urine Routine Examination', desc: 'Physical, chemical, microscopic urine analysis for infections, kidney or metabolic disorders.', price: '₹—' },
+    { name: 'Stool Routine Examination', desc: 'Checks stool for parasites, blood, mucus, or infections.', price: '₹—' },
+    { name: 'Semen Analysis', desc: 'Sperm count, motility, morphology for fertility assessment.', price: '₹—' },
+    { name: 'Peripheral Blood Smear', desc: 'Microscopic evaluation of blood cells for size/shape/number abnormalities.', price: '₹—' },
+    { name: 'Body Fluid Analysis', desc: 'Pleural, peritoneal, synovial, CSF for infection, inflammation, or cancer.', price: '₹—' },
+    { name: 'Complete Urine Examination (CUE)', desc: 'pH, protein, sugar, ketones, blood, nitrite for kidney/metabolic disorders.', price: '₹—' },
+    { name: 'Sputum Examination', desc: 'Detects bacterial, fungal or mycobacterial infections (e.g., TB).', price: '₹—' },
+    { name: 'Bone Marrow Aspiration and Biopsy', desc: 'Assesses marrow in anemia, leukemia, lymphoma.', price: '₹—' },
+    { name: 'Pap Smear', desc: 'Screens for cervical cancer and cervical abnormalities.', price: '₹—' },
+    { name: 'Fine Needle Aspiration Cytology (FNAC)', desc: 'Cells from lumps/masses to diagnose tumors or infections.', price: '₹—' },
+    { name: 'Biopsy Examination', desc: 'Histopathology of tissue for cancer or chronic inflammatory diseases.', price: '₹—' },
+    { name: 'Fluid Cytology', desc: 'Cells in pleural/peritoneal fluids for malignancy or infection.', price: '₹—' },
+    { name: 'Synovial Fluid Analysis', desc: 'Joint fluid tests for gout, arthritis, infection.', price: '₹—' },
+    { name: 'Hematology Parameters', desc: 'CBC, ESR, coagulation studies as part of clinical assessment.', price: '₹—' },
+    { name: 'Special Stain Tests', desc: 'Gram stain, Ziehl–Neelsen and others to detect specific pathogens.', price: '₹—' },
+    { name: 'Urine Culture', desc: 'Identifies bacteria causing urinary tract infections.', price: '₹—' },
+    { name: 'Stool Culture', desc: 'Detects pathogens causing GI infections.', price: '₹—' },
+    { name: 'Sweat Test', desc: 'Chloride measurement for cystic fibrosis diagnosis.', price: '₹—' },
+    { name: 'Vaginal Smear', desc: 'Detects infections or hormonal imbalance.', price: '₹—' },
+    { name: 'Cytopathology Tests', desc: 'Exfoliative/aspiration cytology for infections, malignancy or benign lesions.', price: '₹—' }
+  ]
+
+  const histopathologyTests = [
+    { name: 'Biopsy Examination', desc: 'Tissue samples from organs to diagnose cancer, infections, or chronic conditions.', price: '₹—' },
+    { name: 'Surgical Specimen Analysis', desc: 'Analysis of tissues removed during surgery to determine benign vs malignant.', price: '₹—' },
+    { name: 'Frozen Section', desc: 'Rapid intraoperative tissue exam to guide immediate surgical decisions.', price: '₹—' },
+    { name: 'Immunohistochemistry (IHC)', desc: 'Antibody-based detection of antigens to classify tumors and infections.', price: '₹—' },
+    { name: 'Fine Needle Aspiration Cytology (FNAC)', desc: 'Cytology of needle-aspirated cells from masses for diagnosis.', price: '₹—' },
+    { name: 'Excisional Biopsy', desc: 'Complete lesion removal followed by detailed histology.', price: '₹—' },
+    { name: 'Incisional Biopsy', desc: 'Partial tissue sampling from larger lesions for diagnosis.', price: '₹—' },
+    { name: 'Endoscopic Biopsy', desc: 'Tissue obtained during endoscopy (GI/bronchial) for pathology.', price: '₹—' },
+    { name: 'Cervical Biopsy', desc: 'Assessment of cervical tissue for precancerous changes or cancer.', price: '₹—' },
+    { name: 'Lymph Node Biopsy', desc: 'Evaluates infection, lymphoma, or metastatic disease.', price: '₹—' },
+    { name: 'Skin Biopsy', desc: 'Histology for psoriasis, eczema, skin cancer, infections.', price: '₹—' },
+    { name: 'Bone Marrow Biopsy', desc: 'Marrow tissue exam for leukemia, anemia, marrow disorders.', price: '₹—' },
+    { name: 'Breast Tissue Analysis', desc: 'Core needle or excision for benign vs malignant breast lesions.', price: '₹—' },
+    { name: 'Kidney Biopsy', desc: 'Evaluates glomerulonephritis, nephrotic syndrome, rejection.', price: '₹—' },
+    { name: 'Liver Biopsy', desc: 'Diagnoses hepatitis, cirrhosis, tumors.', price: '₹—' },
+    { name: 'Lung Biopsy', desc: 'For infections, interstitial disease, or lung cancer.', price: '₹—' },
+    { name: 'Prostate Biopsy', desc: 'Assesses BPH vs prostate cancer.', price: '₹—' },
+    { name: 'Gastrointestinal Biopsy', desc: 'Esophagus/stomach/colon for IBD, ulcers, cancer.', price: '₹—' },
+    { name: 'Neuropathology Analysis', desc: 'Brain/nerve tissue for tumors, neurodegeneration, infections.', price: '₹—' },
+    { name: 'Placental Histopathology', desc: 'Placenta exam for pregnancy complications or infections.', price: '₹—' }
+  ]
+
   return (
       <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-purple-100">
         {/* Header */}
-        <header className="shadow-2xl sticky top-0 z-50 backdrop-blur-md border-b border-purple-200" style={{backgroundColor: '#9929EA', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.1)'}}>
+        <header className="shadow-2xl sticky top-0 z-50 backdrop-blur-md border-b border-purple-200" style={{backgroundColor: '#662fa9', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.1)'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             <div className="flex items-center">
@@ -60,30 +241,64 @@ export default function Home(){
               </div>
             </div>
             <nav className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-8">
-                <Link to="/" className="text-white hover:text-yellow-300 px-4 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white/20 rounded-lg">Home</Link>
-                <Link to="/tests" className="text-white hover:text-yellow-300 px-4 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white/20 rounded-lg">Tests</Link>
-                <Link to="/login" className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black hover:from-yellow-500 hover:to-orange-600 px-6 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">Login</Link>
+              <div className="ml-10 flex items-baseline space-x-4">
+                <Link to="/" className="text-white hover:text-purple-200 px-4 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white/20 rounded-lg">Home</Link>
+                <Link to="/tests" className="text-white hover:text-purple-200 px-4 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white/20 rounded-lg">Tests</Link>
+                {/* <Link to="/login" className="text-white hover:text-purple-200 px-4 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white/20 rounded-lg">Login</Link> */}
+                <a href="tel:+91 8605941731" className="text-white hover:text-purple-200 px-4 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white/20 rounded-lg inline-flex items-center gap-2">
+                  
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" className="w-4 h-4" fill="currentColor">
+                    <path d="M19.11 17.12a5.61 5.61 0 0 1-2.41-.61c-.74-.35-1.58-.78-2.58-1.79s-2-2.53-2.31-3.2a6.1 6.1 0 0 1-.61-2.41 2.67 2.67 0 0 1 .86-2 1 1 0 0 1 .72-.32h.54a.68.68 0 0 1 .5.41l.77 1.8a.67.67 0 0 1 0 .52 1.77 1.77 0 0 1-.25.4c-.14.16-.28.34-.39.46a.84.84 0 0 0-.17.33c0 .12 0 .25.19.49a9.81 9.81 0 0 0 1.76 2.19 8.64 8.64 0 0 0 2 1.38c.24.11.37.1.5 0a3.34 3.34 0 0 0 .35-.3l.1-.1a.67.67 0 0 1 .67-.17l1.84.77a.68.68 0 0 1 .41.5v.54a1 1 0 0 1-.32.72 2.69 2.69 0 0 1-2.01.86ZM16 3a13 13 0 0 0-11 19.66L3.34 28l5.5-1.62A13 13 0 1 0 16 3Zm0-2a15 15 0 1 1 0 30 15 15 0 0 1-4.85-.8L2 31l1.88-9.1A15 15 0 0 1 16 1Z"/>
+                  </svg>
+                  +91 8605941731
+                </a>
+                <a href="tel:+91 02422299688" className="text-white hover:text-purple-200 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white/20 rounded-lg inline-flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.69l1.2 3.6a1 1 0 01-.27 1.07l-2.02 2.02a16 16 0 006.36 6.36l2.02-2.02a1 1 0 011.07-.27l3.6 1.2a1 1 0 01.69.95V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                  +91 2422299688
+                </a>
+                <a href="https://maps.app.goo.gl/MJEnATgUghqZ5SqZ9" target="_blank" rel="noopener noreferrer" className="text-white hover:text-purple-200 px-4 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white/20 rounded-lg inline-flex items-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5Z"/>
+                  </svg>
+                  Address
+                </a>
               </div>
           </nav>
-            <div className="md:hidden">
-              <Link to="/login" className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-4 py-2 rounded-lg text-sm font-semibold shadow-lg">Login</Link>
+            <div className="md:hidden space-x-2 flex items-center">
+              <a href="tel:+91 8605941731" className="text-white px-2 py-1 text-xs font-semibold rounded inline-flex items-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.69l1.2 3.6a1 1 0 01-.27 1.07l-2.02 2.02a16 16 0 0 0 6.36 6.36l2.02-2.02a1 1 0 0 1 1.07-.27l3.6 1.2a1 1 0 0 1 .69.95V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                +91 8605941731
+              </a>
+              <a href="tel:+91 02422299688" className="text-white px-2 py-1 text-xs font-semibold rounded inline-flex items-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" className="w-3.5 h-3.5" fill="currentColor">
+                  <path d="M19.11 17.12a5.61 5.61 0 0 1-2.41-.61c-.74-.35-1.58-.78-2.58-1.79s-2-2.53-2.31-3.2a6.1 6.1 0 0 1-.61-2.41 2.67 2.67 0 0 1 .86-2 1 1 0 0 1 .72-.32h.54a.68.68 0 0 1 .5.41l.77 1.8a.67.67 0 0 1 0 .52 1.77 1.77 0 0 1-.25.4c-.14.16-.28.34-.39.46a.84.84 0 0 0-.17.33c0 .12 0 .25.19.49a9.81 9.81 0 0 0 1.76 2.19 8.64 8.64 0 0 0 2 1.38c.24.11.37.1.5 0a3.34 3.34 0 0 0 .35-.3l.1-.1a.67.67 0 0 1 .67-.17l1.84.77a.68.68 0 0 1 .41.5v.54a1 1 0 0 1-.32.72 2.69 2.69 0 0 1-2.01.86ZM16 3a13 13 0 0 0-11 19.66L3.34 28l5.5-1.62A13 13 0 1 0 16 3Zm0-2a15 15 0 1 1 0 30 15 15 0 0 1-4.85-.8L2 31l1.88-9.1A15 15 0 0 1 16 1Z"/>
+                </svg>
+                +91 2422299688
+              </a>
+              <a href="https://maps.app.goo.gl/MJEnATgUghqZ5SqZ9" target="_blank" rel="noopener noreferrer" className="text-white px-2 py-1 text-xs font-semibold rounded inline-flex items-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5Z"/>
+                </svg>
+                Address
+              </a>
             </div>
           </div>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden" style={{background: 'linear-gradient(135deg, #642EAA 0%, #7F55B1 25%, #8B5CF6 50%, #A855F7 75%, #C084FC 100%)'}}>
-        <div className="absolute inset-0 bg-black/10"></div>
+      <section className="relative overflow-hidden bg-gradient-to-br from-purple-50 via-white to-purple-100">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           {/* Top Center - Main Heading */}
           <div className="text-center mb-8">
-            <h1 className="text-4xl lg:text-6xl font-bold leading-tight text-white mb-3">
-              Your Health, 
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400"> Our Priority</span>
+            <h1 className="text-4xl lg:text-6xl font-extrabold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-[#2B0A57] via-[#3B0F70] to-[#5B2E98] mb-3" style={{textShadow: '0 2px 6px rgba(0,0,0,0.25)'}}>
+              Your Health, Our Priority
             </h1>
-            <p className="text-xl text-purple-100 leading-relaxed max-w-4xl mx-auto">
+            <p className="text-xl text-purple-600 leading-relaxed max-w-4xl mx-auto">
               Get accurate diagnostic results from the comfort of your home. 
               Our certified lab technicians ensure precision, speed, and reliability.
             </p>
@@ -106,10 +321,10 @@ export default function Home(){
 
           {/* Bottom Center - CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-16">
-            <button className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-8 py-4 rounded-xl font-bold text-lg hover:from-yellow-500 hover:to-orange-600 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
+            <button className="bg-gradient-to-r from-[#3B0F70] to-[#7F55B1] text-white px-8 py-4 rounded-xl font-bold text-lg hover:from-[#2B0A57] hover:to-[#5B2E98] transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
               Book Test Now
             </button>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-purple-900 transition-all duration-300">
+            <button className="border-2 border-black text-black px-8 py-4 rounded-xl font-bold text-lg hover:bg-gradient-to-r from-[#3B0F70] to-[#7F55B1]  transition-all duration-300 transform hover:-translate-y-1">
               View All Tests
             </button>
           </div>
@@ -247,7 +462,7 @@ export default function Home(){
       </section>
 
       {/* Health Packages */}
-      <section className="py-20 relative overflow-hidden bg-gradient-to-br from-purple-50 via-white to-indigo-50">
+      <section className="py-20 relative overflow-hidden bg-gradient-to-br from-purple-50 via-white to-indigo-50" ref={packagesTopRef}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <div className="inline-flex items-center px-6 py-3 rounded-full text-sm font-semibold mb-6" style={{backgroundColor: '#E8D5F2', color: '#642EAA'}}>
@@ -480,6 +695,110 @@ export default function Home(){
                 </button>
               </div>
             </div>
+
+            {showMorePackages && (
+            <>
+            {/* JIJAU DIABETIC CARE */}
+            <div className="bg-white rounded-2xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-500 hover:shadow-3xl border border-purple-100 h-full flex flex-col">
+              <div className="px-6 py-6" style={{backgroundColor: '#642EAA'}}>
+                <h3 className="text-xl font-bold text-white uppercase">JIJAU DIABETIC CARE</h3>
+                <p className="text-purple-100 text-sm mt-1">45 Essential Tests</p>
+              </div>
+              <div className="p-6 bg-gray-50 flex flex-col flex-grow">
+                <div className="text-center mb-6">
+                  <div className="text-gray-600 line-through mb-2">MRP: ₹1,150/-</div>
+                  <div className="relative">
+                    <div className="text-white px-6 py-3 rounded-full shadow-lg" style={{backgroundColor: '#642EAA', animation: 'wiggle-rotate 3s ease-in-out infinite'}}>
+                      <span className="text-yellow-300 font-bold text-lg">Offer Price ₹599/-</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-2 mb-6 flex-grow">
+                  <div className="flex items-center text-sm text-gray-700"><span className="mr-2" style={{color: '#642EAA'}}>→</span>BLOOD SUGAR FASTING & PP (BSF & PP)</div>
+                  <div className="flex items-center text-sm text-gray-700"><span className="mr-2" style={{color: '#642EAA'}}>→</span>COMPLETE BLOOD COUNT + PBS</div>
+                  <div className="flex items-center text-sm text-gray-700"><span className="mr-2" style={{color: '#642EAA'}}>→</span>HbA1c BY HPLC</div>
+                  <div className="flex items-center text-sm text-gray-700"><span className="mr-2" style={{color: '#642EAA'}}>→</span>SERUM CREATININE</div>
+                  <div className="flex items-center text-sm text-gray-700"><span className="mr-2" style={{color: '#642EAA'}}>→</span>TOTAL CHOLESTEROL - SERUM</div>
+                  <div className="flex items-center text-sm text-gray-700"><span className="mr-2" style={{color: '#642EAA'}}>→</span>URINE ROUTINE</div>
+                </div>
+                <button className="w-full text-white py-3 rounded-lg font-semibold transition-colors" style={{backgroundColor: '#642EAA'}} onMouseEnter={(e) => e.target.style.backgroundColor = '#4A1F7A'} onMouseLeave={(e) => e.target.style.backgroundColor = '#642EAA'}>
+                  Book Package
+                </button>
+              </div>
+            </div>
+
+            {/* JIJAU FEVER CARE */}
+            <div className="bg-white rounded-2xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-500 hover:shadow-3xl border border-purple-100 h-full flex flex-col">
+              <div className="px-6 py-6" style={{backgroundColor: '#642EAA'}}>
+                <h3 className="text-xl font-bold text-white uppercase">JIJAU FEVER CARE</h3>
+                <p className="text-purple-100 text-sm mt-1">53 Tests</p>
+              </div>
+              <div className="p-6 bg-gray-50 flex flex-col flex-grow">
+                <div className="text-center mb-6">
+                  <div className="text-gray-600 line-through mb-2">MRP: ₹1,850/-</div>
+                  <div className="relative">
+                    <div className="text-white px-6 py-3 rounded-full shadow-lg" style={{backgroundColor: '#642EAA', animation: 'wiggle-rotate 3s ease-in-out infinite'}}>
+                      <span className="text-yellow-300 font-bold text-lg">Offer Price ₹999/-</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-2 mb-6 flex-grow">
+                  <div className="flex items-center text-sm text-gray-700"><span className="mr-2" style={{color: '#642EAA'}}>→</span>COMPLETE BLOOD COUNT + PBS</div>
+                  <div className="flex items-center text-sm text-gray-700"><span className="mr-2" style={{color: '#642EAA'}}>→</span>ESR</div>
+                  <div className="flex items-center text-sm text-gray-700"><span className="mr-2" style={{color: '#642EAA'}}>→</span>WIDAL SLIDE AGGLUTINATION</div>
+                  <div className="flex items-center text-sm text-gray-700"><span className="mr-2" style={{color: '#642EAA'}}>→</span>MALARIA ANTIGEN (Pv/Pf)</div>
+                  <div className="flex items-center text-sm text-gray-700"><span className="mr-2" style={{color: '#642EAA'}}>→</span>DENGUE (NS1, IgG, IgM) RAPID</div>
+                  <div className="flex items-center text-sm text-gray-700"><span className="mr-2" style={{color: '#642EAA'}}>→</span>URINE ROUTINE</div>
+                </div>
+                <button className="w-full text-white py-3 rounded-lg font-semibold transition-colors" style={{backgroundColor: '#642EAA'}} onMouseEnter={(e) => e.target.style.backgroundColor = '#4A1F7A'} onMouseLeave={(e) => e.target.style.backgroundColor = '#642EAA'}>
+                  Book Package
+                </button>
+              </div>
+            </div>
+
+            {/* SENIOR CITIZEN CARE */}
+            <div className="bg-white rounded-2xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-500 hover:shadow-3xl border border-purple-100 h-full flex flex-col">
+              <div className="px-6 py-6" style={{backgroundColor: '#642EAA'}}>
+                <h3 className="text-xl font-bold text-white uppercase">SENIOR CITIZEN CARE</h3>
+                <p className="text-purple-100 text-sm mt-1">194 Tests</p>
+              </div>
+              <div className="p-6 bg-gray-50 flex flex-col flex-grow">
+                <div className="text-center mb-6">
+                  <div className="text-gray-600 line-through mb-2">MRP: ₹2,350/-</div>
+                  <div className="relative">
+                    <div className="text-white px-6 py-3 rounded-full shadow-lg" style={{backgroundColor: '#642EAA', animation: 'wiggle-rotate 3s ease-in-out infinite'}}>
+                      <span className="text-yellow-300 font-bold text-lg">Offer Price ₹2,999/-</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-2 mb-6 flex-grow">
+                  <div className="flex items-center text-sm text-gray-700"><span className="mr-2" style={{color: '#642EAA'}}>→</span>COMPLETE BLOOD COUNT + PBS</div>
+                  <div className="flex items-center text-sm text-gray-700"><span className="mr-2" style={{color: '#642EAA'}}>→</span>IRON STUDIES</div>
+                  <div className="flex items-center text-sm text-gray-700"><span className="mr-2" style={{color: '#642EAA'}}>→</span>BLOOD SUGAR FASTING & PP (BSF & PP)</div>
+                  <div className="flex items-center text-sm text-gray-700"><span className="mr-2" style={{color: '#642EAA'}}>→</span>HbA1c BY HPLC</div>
+                  <div className="flex items-center text-sm text-gray-700"><span className="mr-2" style={{color: '#642EAA'}}>→</span>RENAL FUNCTION TEST (RFT)</div>
+                  <div className="flex items-center text-sm text-gray-700"><span className="mr-2" style={{color: '#642EAA'}}>→</span>LIPID PROFILE</div>
+                  <div className="flex items-center text-sm text-gray-700"><span className="mr-2" style={{color: '#642EAA'}}>→</span>THYROID FUNCTION TEST (TFT)</div>
+                  <div className="flex items-center text-sm text-gray-700"><span className="mr-2" style={{color: '#642EAA'}}>→</span>VITAMIN D TOTAL (25-OH)</div>
+                  <div className="flex items-center text-sm text-gray-700"><span className="mr-2" style={{color: '#642EAA'}}>→</span>ESR</div>
+                  <div className="flex items-center text-sm text-gray-700"><span className="mr-2" style={{color: '#642EAA'}}>→</span>PSA (PROSTATE SPECIFIC ANTIGEN)</div>
+                </div>
+                <button className="w-full text-white py-3 rounded-lg font-semibold transition-colors" style={{backgroundColor: '#642EAA'}} onMouseEnter={(e) => e.target.style.backgroundColor = '#4A1F7A'} onMouseLeave={(e) => e.target.style.backgroundColor = '#642EAA'}>
+                  Book Package
+                </button>
+              </div>
+            </div>
+            </>
+            )}
+          </div>
+          <div className="mt-8 text-center">
+            <button onClick={() => { if (showMorePackages && packagesTopRef.current) { packagesTopRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' }) }; setShowMorePackages(!showMorePackages) }} className="cta">
+              <span>{showMorePackages ? 'Show fewer' : 'Show More'}</span>
+              <svg width="30px" height="10px" viewBox="0 0 13 10">
+                <path d="M1,5 L11,5"></path>
+                <polyline points="8 1 12 5 8 9"></polyline>
+              </svg>
+            </button>
           </div>
         </div>
       </section>
@@ -488,7 +807,7 @@ export default function Home(){
 
       {/* Diagnostic Tests Overview */}
       <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-secondary-900 mb-4">BLOOD TESTS OVERVIEW</h2>
             <p className="text-lg text-secondary-600">Explore our comprehensive range of diagnostic test categories</p>
@@ -496,54 +815,160 @@ export default function Home(){
           
           <div className="space-y-4">
             {/* Hematology */}
-            <div className="rounded-xl p-6 cursor-pointer hover:shadow-lg transition-all duration-300 transform hover:scale-105" style={{background: 'linear-gradient(90deg, #7F55B1 0%, #6B46A3 100%)'}}>
-              <div className="flex items-center justify-between">
+            <details className="rounded-xl p-6 hover:shadow-lg transition-all duration-300  group" style={{background: 'linear-gradient(90deg, #7F55B1 0%, #6B46A3 100%)'}}>
+              <summary className="flex items-center justify-between list-none">
                 <h3 className="text-xl font-semibold text-white">Hematology</h3>
-                <svg className="w-6 h-6 text-white transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6 text-white transform transition-transform duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
+              </summary>
+              <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                {(showMoreHematology ? hematologyTests : hematologyTests.slice(0, 5)).map((t, i) => (
+                  <div key={i} className="bg-purple-50 rounded-xl shadow-md p-5 border border-purple-100 flex flex-col justify-between">
+                    <div>
+                      <h4 className="text-lg font-semibold text-secondary-900 mb-2">{t.name}</h4>
+                      <p className="text-secondary-700 text-sm">{t.desc}</p>
+                    </div>
+                    <div className="mt-4 flex items-center justify-between">
+                      <span className="text-[#7F55B1] font-bold">{t.price}</span>
+                      <button className="px-4 py-2 bg-[#7F55B1] hover:bg-[#6B46A3] text-white text-sm rounded-lg">Book Now</button>
+                    </div>
+                  </div>
+                ))}
               </div>
-            </div>
+              <div className="mt-4 text-right">
+                <button onClick={() => setShowMoreHematology(!showMoreHematology)} className="cta cta--sm cta--white">
+                  <span>{showMoreHematology ? 'Show fewer tests' : 'Show more'}</span>
+                  <svg width="30px" height="10px" viewBox="0 0 13 10">
+                    <path d="M1,5 L11,5"></path>
+                    <polyline points="8 1 12 5 8 9"></polyline>
+                  </svg>
+                </button>
+              </div>
+            </details>
 
             {/* Biochemistry */}
-            <div className="rounded-xl p-6 cursor-pointer hover:shadow-lg transition-all duration-300 transform hover:scale-105" style={{background: 'linear-gradient(90deg, #7F55B1 0%, #6B46A3 100%)'}}>
-              <div className="flex items-center justify-between">
+            <details className="rounded-xl p-6 hover:shadow-lg transition-all duration-300 group" style={{background: 'linear-gradient(90deg, #7F55B1 0%, #6B46A3 100%)'}}>
+              <summary className="flex items-center justify-between list-none">
                 <h3 className="text-xl font-semibold text-white">Biochemistry</h3>
-                <svg className="w-6 h-6 text-white transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6 text-white transform transition-transform duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
+              </summary>
+              <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                {(showMoreBiochemistry ? biochemistryTests : biochemistryTests.slice(0, 5)).map((t, i) => (
+                  <div key={i} className="bg-purple-50 rounded-xl shadow-md p-5 border border-purple-100 flex flex-col justify-between">
+                    <div>
+                      <h4 className="text-lg font-semibold text-secondary-900 mb-2">{t.name}</h4>
+                      <p className="text-secondary-700 text-sm">{t.desc}</p>
+                    </div>
+                    <div className="mt-4 flex items-center justify-between">
+                      <span className="text-[#7F55B1] font-bold">{t.price}</span>
+                      <button className="px-4 py-2 bg-[#7F55B1] hover:bg-[#6B46A3] text-white text-sm rounded-lg">Book Now</button>
+                    </div>
+                  </div>
+                ))}
               </div>
-            </div>
+              <div className="mt-4 text-right">
+                <button onClick={() => setShowMoreBiochemistry(!showMoreBiochemistry)} className="cta cta--sm cta--white">
+                  <span>{showMoreBiochemistry ? 'Show fewer tests' : 'Show more'}</span>
+                  <svg width="30px" height="10px" viewBox="0 0 13 10">
+                    <path d="M1,5 L11,5"></path>
+                    <polyline points="8 1 12 5 8 9"></polyline>
+                  </svg>
+                </button>
+              </div>
+            </details>
 
             {/* Serology */}
-            <div className="rounded-xl p-6 cursor-pointer hover:shadow-lg transition-all duration-300 transform hover:scale-105" style={{background: 'linear-gradient(90deg, #7F55B1 0%, #6B46A3 100%)'}}>
-              <div className="flex items-center justify-between">
+            <details className="rounded-xl p-6 hover:shadow-lg transition-all duration-300 group" style={{background: 'linear-gradient(90deg, #7F55B1 0%, #6B46A3 100%)'}}>
+              <summary className="flex items-center justify-between list-none">
                 <h3 className="text-xl font-semibold text-white">Serology</h3>
-                <svg className="w-6 h-6 text-white transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6 text-white transform transition-transform duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
+              </summary>
+              <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                {(showMoreSerology ? serologyTests : serologyTests.slice(0, 5)).map((t, i) => (
+                  <div key={i} className="bg-purple-50 rounded-xl shadow-md p-5 border border-purple-100 flex flex-col justify-between">
+                    <div>
+                      <h4 className="text-lg font-semibold text-secondary-900 mb-2">{t.name}</h4>
+                      <p className="text-secondary-700 text-sm">{t.desc}</p>
+                    </div>
+                    <div className="mt-4 flex items-center justify-between">
+                      <span className="text-[#7F55B1] font-bold">{t.price}</span>
+                      <button className="px-4 py-2 bg-[#7F55B1] hover:bg-[#6B46A3] text-white text-sm rounded-lg">Book Now</button>
+                    </div>
+                  </div>
+                ))}
               </div>
-            </div>
+              <div className="mt-4 text-right">
+                <button onClick={() => setShowMoreSerology(!showMoreSerology)} className="cta cta--sm cta--white">
+                  <span>{showMoreSerology ? 'Show fewer tests' : 'Show more'}</span>
+                  <svg width="30px" height="10px" viewBox="0 0 13 10">
+                    <path d="M1,5 L11,5"></path>
+                    <polyline points="8 1 12 5 8 9"></polyline>
+                  </svg>
+                </button>
+              </div>
+            </details>
 
             {/* Clinical Pathology */}
-            <div className="rounded-xl p-6 cursor-pointer hover:shadow-lg transition-all duration-300 transform hover:scale-105" style={{background: 'linear-gradient(90deg, #7F55B1 0%, #6B46A3 100%)'}}>
-              <div className="flex items-center justify-between">
+            <details className="rounded-xl p-6 hover:shadow-lg transition-all duration-300 group" style={{background: 'linear-gradient(90deg, #7F55B1 0%, #6B46A3 100%)'}}>
+              <summary className="flex items-center justify-between list-none">
                 <h3 className="text-xl font-semibold text-white">Clinical Pathology</h3>
-                <svg className="w-6 h-6 text-white transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6 text-white transform transition-transform duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
+              </summary>
+              <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                {(showMoreSerology ? clinicalPathologyTests : clinicalPathologyTests.slice(0, 5)).map((t, i) => (
+                  <div key={i} className="bg-purple-50 rounded-xl shadow-md p-5 border border-purple-100 flex flex-col justify-between">
+                    <div>
+                      <h4 className="text-lg font-semibold text-secondary-900 mb-2">{t.name}</h4>
+                      <p className="text-secondary-700 text-sm">{t.desc}</p>
+                    </div>
+                    <div className="mt-4 flex items-center justify-between">
+                      <span className="text-[#7F55B1] font-bold">{t.price}</span>
+                      <button className="px-4 py-2 bg-[#7F55B1] hover:bg-[#6B46A3] text-white text-sm rounded-lg">Book Now</button>
+                    </div>
+                  </div>
+                ))}
               </div>
-            </div>
+              <div className="mt-4 text-right">
+                <button onClick={() => setShowMoreSerology(!showMoreSerology)} className="cta cta--sm cta--white">
+                  <span>{showMoreSerology ? 'Show fewer tests' : 'Show more'}</span>
+                  <svg width="30px" height="10px" viewBox="0 0 13 10">
+                    <path d="M1,5 L11,5"></path>
+                    <polyline points="8 1 12 5 8 9"></polyline>
+                  </svg>
+                </button>
+              </div>
+            </details>
 
             {/* Histopathology */}
-            <div className="rounded-xl p-6 cursor-pointer hover:shadow-lg transition-all duration-300 transform hover:scale-105" style={{background: 'linear-gradient(90deg, #7F55B1 0%, #6B46A3 100%)'}}>
-              <div className="flex items-center justify-between">
+            <details className="rounded-xl p-6 hover:shadow-lg transition-all duration-300 group" style={{background: 'linear-gradient(90deg, #7F55B1 0%, #6B46A3 100%)'}}>
+              <summary className="flex items-center justify-between list-none">
                 <h3 className="text-xl font-semibold text-white">Histopathology</h3>
-                <svg className="w-6 h-6 text-white transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6 text-white transform transition-transform duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
+              </summary>
+              <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                {histopathologyTests.slice(0, 5).map((t, i) => (
+                  <div key={i} className="bg-purple-50 rounded-xl shadow-md p-5 border border-purple-100 flex flex-col justify-between">
+                    <div>
+                      <h4 className="text-lg font-semibold text-secondary-900 mb-2">{t.name}</h4>
+                      <p className="text-secondary-700 text-sm">{t.desc}</p>
+                    </div>
+                    <div className="mt-4 flex items-center justify-between">
+                      <span className="text-[#7F55B1] font-bold">{t.price}</span>
+                      <button className="px-4 py-2 bg-[#7F55B1] hover:bg-[#6B46A3] text-white text-sm rounded-lg">Book Now</button>
+                    </div>
+                  </div>
+                ))}
               </div>
-            </div>
+            </details>
           </div>
         </div>
       </section>
