@@ -59,82 +59,69 @@ function Home() {
     {
       name: 'Complete Blood Count (CBC)',
       desc: 'Measures red blood cells, white blood cells, hemoglobin, hematocrit, and platelets to detect anemia, infections, and blood disorders.',
-      price: '₹20'
+      price: '₹200'
     },
     {
-      name: 'Blood Smear',
+      name: 'Complte Blood Count + Blood Smear',
       desc: 'Examines blood cells under a microscope to identify abnormalities in shape, size, or number.',
-      price: '₹15'
+      price: '₹250'
     },
     {
       name: 'Erythrocyte Sedimentation Rate (ESR)',
       desc: 'Measures the rate at which red blood cells settle; used to detect inflammation or infections.',
-      price: '₹18'
+      price: '₹100'
     },
     {
       name: 'Prothrombin Time (PT) and INR',
       desc: 'Assesses blood clotting time to monitor bleeding or clotting disorders.',
-      price: '₹22'
+      price: '₹350'
     },
     {
       name: 'Activated Partial Thromboplastin Time (aPTT)',
       desc: 'Checks for clotting disorders and monitors heparin therapy.',
-      price: '₹18'
+      price: '₹500'
     },
     {
       name: 'Reticulocyte Count',
       desc: 'Measures immature red blood cells to evaluate bone marrow function and anemia.',
-      price: '₹20'
+      price: '₹200'
     },
     {
       name: 'Hemoglobin Electrophoresis',
       desc: 'Identifies abnormal hemoglobin types, such as in sickle cell anemia or thalassemia.',
-      price: '₹—'
+      price: '₹900'
     },
     {
       name: 'Iron Studies (Serum Iron, Ferritin, TIBC)',
       desc: 'Evaluates iron deficiency or overload in conditions like anemia.',
-      price: '₹—'
+      price: '₹500'
     },
     {
       name: 'D-Dimer',
       desc: 'Detects blood clots, such as deep vein thrombosis or pulmonary embolism.',
-      price: '₹—'
+      price: '₹1000'
     },
     {
       name: 'Bone Marrow Aspiration/Biopsy',
       desc: 'Examines bone marrow for leukemia, anemia, or other blood disorders.',
-      price: '₹—'
+      price: '₹850'
     },
     {
-      name: 'Vitamin B12 and Folate Levels',
+      name: 'Vitamin B12 ',
       desc: 'Detects deficiencies causing anemia or nerve damage.',
-      price: '₹—'
+      price: '₹750'
     },
-    {
-      name: 'Flow Cytometry',
-      desc: 'Analyzes blood or bone marrow cells for leukemia, lymphoma, and immune disorders.',
-      price: '₹—'
-    },
-    {
-      name: 'Lactate Dehydrogenase (LDH)',
-      desc: 'Indicates cell damage or hemolysis.',
-      price: '₹—'
-    },
+
+   { name: 'HbA1c (Glycated Hemoglobin)', desc: 'Long-term overview of blood sugar control in diabetes.', price: '₹400' },
     {
       name: 'G6PD Test',
       desc: 'Diagnoses glucose-6-phosphate dehydrogenase deficiency.',
-      price: '₹—'
+      price: '₹550'
     },
     {
       name: 'Coombs Test (Direct/Indirect)',
       desc: 'Detects antibodies that attack red blood cells; useful in autoimmune hemolytic anemia.',
-      price: '₹—'
-    },
-    {
-      name: 'JAK2 Mutation Test',
-      desc: 'Identifies genetic mutations linked to myeloproliferative disorders.',
-      price: '₹—'
+      price: '₹1350'
     }
   ]
 
@@ -154,56 +141,51 @@ function Home() {
     { name: 'Alkaline Phosphatase (ALP)', desc: 'Indicates liver or bone disorders.', price: '₹—' },
     { name: 'Amylase and Lipase', desc: 'Pancreatic enzymes to diagnose pancreatitis.', price: '₹—' },
     { name: 'Serum Iron and Ferritin', desc: 'Assesses iron stores and iron-deficiency anemia.', price: '₹—' },
-    { name: 'Vitamin D and Vitamin B12', desc: 'Detects deficiencies affecting bone, nerve, and RBC production.', price: '₹—' },
-    { name: 'HbA1c (Glycated Hemoglobin)', desc: 'Long-term overview of blood sugar control in diabetes.', price: '₹—' },
-    { name: 'Lactate Dehydrogenase (LDH)', desc: 'Indicates tissue damage or systemic diseases.', price: '₹—' },
-    { name: 'Bilirubin Test', desc: 'Measures bilirubin to diagnose jaundice or liver dysfunction.', price: '₹—' },
-    { name: 'Hormonal Assays', desc: 'Estrogen, testosterone, prolactin, cortisol for endocrine function.', price: '₹—' }
+    { name: 'Vitamin D ', desc: 'Detects deficiencies affecting bone, nerve, and RBC production.', price: '₹1000' },
+    { name: 'Lactate Dehydrogenase (LDH)', desc: 'Indicates tissue damage or systemic diseases.', price: '₹500' },
+    { name: 'Bilirubin Test', desc: 'Measures bilirubin to diagnose jaundice or liver dysfunction.', price: '₹200' },
+    { name: 'Hormonal Assays', desc: 'Estrogen, testosterone, prolactin, cortisol for endocrine function.', price: 'ask for details' }
   ]
 
   const serologyTests = [
-    { name: 'Widal Test', desc: 'Detects antibodies against Salmonella typhi for typhoid diagnosis.', price: '₹—' },
-    { name: 'VDRL Test', desc: 'Screens for syphilis by detecting antibodies in blood.', price: '₹—' },
-    { name: 'ASO (Antistreptolysin O) Test', desc: 'Detects antibodies to streptococcal infections; rheumatic fever risk.', price: '₹—' },
-    { name: 'Rheumatoid Factor (RF)', desc: 'Detects RF antibodies; helps diagnose rheumatoid arthritis.', price: '₹—' },
-    { name: 'CRP (C-Reactive Protein)', desc: 'Identifies inflammation or infection in the body.', price: '₹—' },
-    { name: 'Rapid Plasma Reagin (RPR)', desc: 'An alternate screening test for syphilis.', price: '₹—' },
-    { name: 'HIV Antibody Test', desc: 'Detects antibodies against HIV.', price: '₹—' },
-    { name: 'HBsAg', desc: 'Detects hepatitis B surface antigen for hepatitis B infection.', price: '₹—' },
-    { name: 'Anti-HCV Antibody', desc: 'Identifies antibodies against hepatitis C virus.', price: '₹—' },
-    { name: 'Dengue Serology', desc: 'IgM/IgG antibodies or NS1 antigen for dengue diagnosis.', price: '₹—' },
-    { name: 'Malaria Antigen', desc: 'Rapid detection of Plasmodium species.', price: '₹—' },
-    { name: 'Leptospirosis Test', desc: 'Detects antibodies against Leptospira bacteria.', price: '₹—' },
-    { name: 'Tuberculosis (TB) Tests', desc: 'Mantoux skin test or IGRA (TB blood test).', price: '₹—' },
-    { name: 'Anti-Nuclear Antibody (ANA)', desc: 'Autoantibodies used in diagnosing autoimmune diseases.', price: '₹—' },
-    { name: 'TORCH Panel', desc: 'Screens infections in pregnancy: Toxoplasma, Rubella, CMV, HSV.', price: '₹—' },
-    { name: 'Covid-19 Antibody', desc: 'Detects antibodies indicating prior exposure to SARS-CoV-2.', price: '₹—' },
-    { name: 'Brucella Antibody', desc: 'Identifies antibodies for brucellosis.', price: '₹—' },
-    { name: 'Epstein-Barr Virus (EBV) Test', desc: 'Antibodies to diagnose infectious mononucleosis.', price: '₹—' },
-    { name: 'Helicobacter pylori Antibody', desc: 'Screens for H. pylori linked to peptic ulcers.', price: '₹—' },
-    { name: 'Scrub Typhus Test', desc: 'Detects antibodies to Orientia tsutsugamushi.', price: '₹—' }
+    { name: 'Widal Test', desc: 'Detects antibodies against Salmonella typhi for typhoid diagnosis.', price: '₹200' },
+    { name: 'VDRL Test', desc: 'Screens for syphilis by detecting antibodies in blood.', price: '₹100' },
+    { name: 'ASO (Antistreptolysin O) Test', desc: 'Detects antibodies to streptococcal infections; rheumatic fever risk.', price: '₹600' },
+    { name: 'Rheumatoid Factor (RF)', desc: 'Detects RF antibodies; helps diagnose rheumatoid arthritis.', price: '₹500' },
+    { name: 'CRP (C-Reactive Protein)', desc: 'Identifies inflammation or infection in the body.', price: '₹300' },
+    { name: 'Rapid Plasma Reagin (RPR)', desc: 'An alternate screening test for syphilis.', price: '₹100' },
+    { name: 'HIV Antibody Test', desc: 'Detects antibodies against HIV.', price: '₹300' },
+    { name: 'HBsAg', desc: 'Detects hepatitis B surface antigen for hepatitis B infection.', price: '₹200' },
+    { name: 'Anti-HCV Antibody', desc: 'Identifies antibodies against hepatitis C virus.', price: '₹500' },
+    { name: 'Dengue Serology', desc: 'IgM/IgG antibodies or NS1 antigen for dengue diagnosis.', price: '₹600' },
+    { name: 'Malaria Antigen', desc: 'Rapid detection of Plasmodium species.', price: '₹200' },
+    // { name: 'Leptospirosis Test', desc: 'Detects antibodies against Leptospira bacteria.', price: '₹—' },
+    { name: 'Tuberculosis (TB) Tests', desc: 'Mantoux skin test.', price: '₹350' },
+    { name: 'Anti-Nuclear Antibody (ANA)', desc: 'Autoantibodies used in diagnosing autoimmune diseases.', price: '₹900' },
+    // { name: 'TORCH Panel', desc: 'Screens infections in pregnancy: Toxoplasma, Rubella, CMV, HSV.', price: '₹2500' },
+    { name: 'Covid-19 Antibody', desc: 'Detects antibodies indicating prior exposure to SARS-CoV-2.', price: '₹900' } ,
+    { name: 'Brucella Antibody', desc: 'Identifies antibodies for brucellosis.', price: '₹1850' },
+    { name: 'Epstein-Barr Virus (EBV) Test', desc: 'Antibodies to diagnose infectious mononucleosis.', price: '₹1500' },
+    { name: 'Helicobacter pylori Antibody', desc: 'Screens for H. pylori linked to peptic ulcers.', price: '₹1650' },
+    { name: 'Scrub Typhus Test', desc: 'Detects antibodies to Orientia tsutsugamushi.', price: '₹1000' }
   ]
 
   const clinicalPathologyTests = [
-    { name: 'Urine Routine Examination', desc: 'Physical, chemical, microscopic urine analysis for infections, kidney or metabolic disorders.', price: '₹—' },
-    { name: 'Stool Routine Examination', desc: 'Checks stool for parasites, blood, mucus, or infections.', price: '₹—' },
-    { name: 'Semen Analysis', desc: 'Sperm count, motility, morphology for fertility assessment.', price: '₹—' },
-    { name: 'Peripheral Blood Smear', desc: 'Microscopic evaluation of blood cells for size/shape/number abnormalities.', price: '₹—' },
-    { name: 'Body Fluid Analysis', desc: 'Pleural, peritoneal, synovial, CSF for infection, inflammation, or cancer.', price: '₹—' },
-    { name: 'Complete Urine Examination (CUE)', desc: 'pH, protein, sugar, ketones, blood, nitrite for kidney/metabolic disorders.', price: '₹—' },
-    { name: 'Sputum Examination', desc: 'Detects bacterial, fungal or mycobacterial infections (e.g., TB).', price: '₹—' },
-    { name: 'Bone Marrow Aspiration and Biopsy', desc: 'Assesses marrow in anemia, leukemia, lymphoma.', price: '₹—' },
-    { name: 'Pap Smear', desc: 'Screens for cervical cancer and cervical abnormalities.', price: '₹—' },
-    { name: 'Fine Needle Aspiration Cytology (FNAC)', desc: 'Cells from lumps/masses to diagnose tumors or infections.', price: '₹—' },
-    { name: 'Biopsy Examination', desc: 'Histopathology of tissue for cancer or chronic inflammatory diseases.', price: '₹—' },
-    { name: 'Fluid Cytology', desc: 'Cells in pleural/peritoneal fluids for malignancy or infection.', price: '₹—' },
-    { name: 'Synovial Fluid Analysis', desc: 'Joint fluid tests for gout, arthritis, infection.', price: '₹—' },
-    { name: 'Hematology Parameters', desc: 'CBC, ESR, coagulation studies as part of clinical assessment.', price: '₹—' },
-    { name: 'Special Stain Tests', desc: 'Gram stain, Ziehl–Neelsen and others to detect specific pathogens.', price: '₹—' },
-    { name: 'Urine Culture', desc: 'Identifies bacteria causing urinary tract infections.', price: '₹—' },
-    { name: 'Stool Culture', desc: 'Detects pathogens causing GI infections.', price: '₹—' },
-    { name: 'Sweat Test', desc: 'Chloride measurement for cystic fibrosis diagnosis.', price: '₹—' },
-    { name: 'Vaginal Smear', desc: 'Detects infections or hormonal imbalance.', price: '₹—' },
+    { name: 'Urine Routine Examination', desc: 'Physical, chemical, microscopic urine analysis for infections, kidney or metabolic disorders.', price: '₹100' },
+    { name: 'Stool Routine Examination', desc: 'Checks stool for parasites, blood, mucus, or infections.', price: '₹300' },
+    { name: 'Semen Analysis', desc: 'Sperm count, motility, morphology for fertility assessment.', price: '₹350' },
+    { name: 'Body Fluid Analysis', desc: 'Pleural, peritoneal, synovial, CSF for infection, inflammation, or cancer.', price: 'Ask for details' },
+    { name: 'Sputum Examination', desc: 'Detects bacterial, fungal or mycobacterial infections (e.g., TB).', price: '₹400' },
+    { name: 'Pap Smear', desc: 'Screens for cervical cancer and cervical abnormalities.', price: '₹900' } ,
+    // { name: 'Biopsy Examination', desc: 'Histopathology of tissue for cancer or chronic inflammatory diseases.', price: '₹—' },
+    // { name: 'Fluid Cytology', desc: 'Cells in pleural/peritoneal fluids for malignancy or infection.', price: '₹—' },
+    // { name: 'Synovial Fluid Analysis', desc: 'Joint fluid tests for gout, arthritis, infection.', price: '₹—' },
+    // { name: 'Hematology Parameters', desc: 'CBC, ESR, coagulation studies as part of clinical assessment.', price: '₹—' },
+    { name: 'Special Stain Tests', desc: 'Gram stain, Ziehl–Neelsen and others to detect specific pathogens.', price: 'Ask for details' },
+    { name: 'Urine Culture', desc: 'Identifies bacteria causing urinary tract infections.', price: '₹1000' },
+    { name: 'Stool Culture', desc: 'Detects pathogens causing GI infections.', price: '₹1000' },
+    // { name: 'Sweat Test', desc: 'Chloride measurement for cystic fibrosis diagnosis.', price: '₹—' },
+    // { name: 'Vaginal Smear', desc: 'Detects infections or hormonal imbalance.', price: '₹—' },
     { name: 'Cytopathology Tests', desc: 'Exfoliative/aspiration cytology for infections, malignancy or benign lesions.', price: '₹—' }
   ]
 
@@ -302,7 +284,7 @@ function Home() {
               Your Health, Our Priority
             </h1>
             <p className="text-xl text-purple-600 leading-relaxed max-w-4xl mx-auto">
-              Get accurate diagnostic results from the comfort of your home.
+              Get accurate blood test results from the comfort of your home.
               Our certified lab technicians ensure precision, speed, and reliability.
             </p>
           </div>
@@ -350,7 +332,7 @@ function Home() {
               Schedule Your Test Today
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Get professional diagnostic services at your doorstep. Our certified technicians will visit you within 2 hours of booking.
+              Get professional pathology services at your doorstep. Our certified technicians will visit you within 30 minutes of booking.
             </p>
           </div>
 
@@ -404,7 +386,7 @@ function Home() {
             </div>
 
             {/* Right Side - Form */}
-            <div className="bg-white rounded-3xl p-8 shadow-2xl border border-purple-100">
+            <div className="bg-purple-200 rounded-3xl p-8 shadow-2xl border border-purple-100">
               <div className="mb-6">
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Book Your Test</h3>
                 <p className="text-gray-600">Fill the form and we'll call you within 15 minutes</p>
@@ -1058,8 +1040,8 @@ function Home() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     </div>
-                    <h3 className="text-lg font-semibold text-secondary-900 mb-2">Trained Phlebotomists</h3>
-                    <p className="text-secondary-600">Skilled professionals ensure safe and comfortable sample collection</p>
+                    <h3 className="text-lg font-semibold text-secondary-900 mb-2">Trained Team</h3>
+                    <p className="text-secondary-600">Skilled professionals pathologist, Doctors & Technicians </p>
                   </div>
 
                   <div className="text-center">
@@ -1069,7 +1051,7 @@ function Home() {
                       </svg>
                     </div>
                     <h3 className="text-lg font-semibold text-secondary-900 mb-2">100% Hygienic</h3>
-                    <p className="text-secondary-600">Strict hygiene protocols and sanitized equipment for every collection</p>
+                    <p className="text-secondary-600">Strict hygiene protocols and sanitized equipment for every collection and testing</p>
                   </div>
 
                   <div className="text-center">
@@ -1106,7 +1088,7 @@ function Home() {
                 <div className="text-center mb-16">
                   <span className="bg-purple-200 text-purple-800 text-sm font-medium px-4 py-1.5 rounded-full inline-block mb-4">Simple Steps</span>
                   <h2 className="text-4xl md:text-5xl font-bold text-secondary-900 mb-4">Here's How The Process Works</h2>
-                  <p className="text-lg text-secondary-600 max-w-2xl mx-auto">Follow these simple steps to get your diagnostic tests done from the comfort of your home</p>
+                  <p className="text-lg text-secondary-600 max-w-2xl mx-auto">Follow these simple steps to get your blood tests done from the comfort of your home</p>
                 </div>
 
                 <div className="relative">
@@ -1172,7 +1154,7 @@ function Home() {
                         </div>
                       </div>
                       <h3 className="text-xl font-bold text-secondary-900 mb-2">Lab Analysis</h3>
-                      <p className="text-secondary-600">Sample processed in our state-of-the-art lab</p>
+                      <p className="text-secondary-600">Sample processed in our lab</p>
                     </div>
 
                     {/* Step 5 */}
@@ -1187,7 +1169,7 @@ function Home() {
                         </div>
                       </div>
                       <h3 className="text-xl font-bold text-secondary-900 mb-2">Quick Results</h3>
-                      <p className="text-secondary-600">Get digital reports within 6 hours</p>
+                      <p className="text-secondary-600">Get digital reports within 4-6 hours</p>
                     </div>
                   </div>
 
@@ -1216,7 +1198,7 @@ function Home() {
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                   <div>
                     <h3 className="text-xl font-bold mb-4">JIJAU PATHOLOGY LABORATORY</h3>
-                    <p className="text-secondary-300 mb-4">Your trusted partner for accurate and reliable diagnostic services.</p>
+                    <p className="text-secondary-300 mb-4">Your trusted partner for blood test and reliable Pathology services.</p>
                     <div className="flex space-x-4">
                       <div className="p-2 rounded" style={{ backgroundColor: '#642EAA' }}>
                         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">

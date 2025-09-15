@@ -12,17 +12,17 @@ export default function Tests(){
 
   // Mock data for tests (in case backend is not available)
   const mockTests = [
-    { id: 1, name: 'Complete Blood Count (CBC)', price: 200, category: 'blood', info: 'Comprehensive blood analysis including red blood cells, white blood cells, and platelets', code: 'CBC001', fasting: false, reportTime: '6 hours' },
-    { id: 2, name: 'Liver Function Test (LFT)', price: 500, category: 'organ', info: 'Assessment of liver health through various enzymes and proteins', code: 'LFT001', fasting: true, reportTime: '6 hours' },
-    { id: 3, name: 'Thyroid Function Test (TFT)', price: 400, category: 'hormone', info: 'Measures thyroid function and helps diagnose thyroid disorders', code: 'TSH001', fasting: false, reportTime: '6 hours' },
+    { id: 1, name: 'Complete Blood Count (CBC)', price: 200, category: 'blood', info: 'Comprehensive blood analysis including red blood cells, white blood cells, and platelets', code: 'CBC001', fasting: false, reportTime: '2 hours' },
+    { id: 2, name: 'Liver Function Test (LFT)', price: 500, category: 'organ', info: 'Assessment of liver health through various enzymes and proteins', code: 'LFT001', fasting: false, reportTime: '2 hours' },
+    { id: 3, name: 'Thyroid Function Test (TFT)', price: 400, category: 'hormone', info: 'Measures thyroid function and helps diagnose thyroid disorders', code: 'TSH001', fasting: false, reportTime: '2 hours' },
     { id: 4, name: 'C-reactive Protein (CRP)', price: 300, category: 'inflammatory', info: 'Measures inflammation levels in the body', code: 'CRP001', fasting: false, reportTime: '6 hours' },
     { id: 5, name: 'HbA1C (Diabetes)', price: 400, category: 'diabetes', info: 'Measures average blood sugar levels over the past 2-3 months', code: 'HBA001', fasting: false, reportTime: '6 hours' },
-    { id: 6, name: 'Lipid Profile', price: 550, category: 'cardiac', info: 'Comprehensive cholesterol and lipid analysis', code: 'LIP001', fasting: true, reportTime: '6 hours' },
-    { id: 7, name: 'Kidney Function Test (KFT)', price: 450, category: 'organ', info: 'Assessment of kidney health and function', code: 'KFT001', fasting: true, reportTime: '6 hours' },
+    { id: 6, name: 'Lipid Profile', price: 550, category: 'cardiac', info: 'Comprehensive cholesterol and lipid analysis', code: 'LIP001', fasting: true, reportTime: '2 hours' },
+    { id: 7, name: 'Kidney Function Test (KFT)', price: 450, category: 'organ', info: 'Assessment of kidney health and function', code: 'KFT001', fasting: false, reportTime: '2 hours' },
     { id: 8, name: 'Vitamin D', price: 1000, category: 'vitamin', info: 'Measures vitamin D levels in the blood', code: 'VIT001', fasting: false, reportTime: '6 hours' },
-    { id: 9, name: 'Iron Studies', price: 500, category: 'blood', info: 'Comprehensive iron level analysis', code: 'IRN001', fasting: true, reportTime: '6 hours' },
-    { id: 10, name: 'Complete Urine Examination', price: 100, category: 'urine', info: 'Comprehensive urine analysis for various health indicators', code: 'UR001', fasting: false, reportTime: '6 hours' },
-    { id: 11, name: 'Diabetes Basic Panel(sugar Fasting & post prandial)', price: 100, category: 'diabetes', info: 'Basic diabetes screening including glucose and HbA1C', code: 'DB001', fasting: true, reportTime: '6 hours' },
+    { id: 9, name: 'Iron Studies', price: 500, category: 'blood', info: 'Comprehensive iron level analysis', code: 'IRN001', fasting: false, reportTime: '6 hours' },
+    { id: 10, name: 'Complete Urine Examination', price: 100, category: 'urine', info: 'Comprehensive urine analysis for various health indicators', code: 'UR001', fasting: false, reportTime: '2 hours' },
+    { id: 11, name: 'Diabetes Basic Panel(sugar Fasting & post prandial)', price: 130, category: 'diabetes', info: 'Basic diabetes screening including glucose and HbA1C', code: 'DB001', fasting: true, reportTime: '4 hours' },
     { id: 12, name: 'Diabetes Advanced Panel(sugar Fasting & post prandial-HBA1C)', price: 500, category: 'diabetes', info: 'Comprehensive diabetes assessment with multiple parameters', code: 'DB002', fasting: true, reportTime: '6 hours' }
   ];
 
@@ -217,7 +217,7 @@ export default function Tests(){
           <p className="text-lg mb-6">Our health advisors are here to help you select the most appropriate tests for your needs.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button className="bg-white text-logo-vibrant hover:bg-purple-50 px-8 py-3 rounded-lg font-semibold transition-colors">
-              Call Us: +91 98765 43210
+              Call Us: +91 8605941731
             </button>
             <button className="border-2 border-white text-white hover:bg-white hover:text-logo-vibrant px-8 py-3 rounded-lg font-semibold transition-colors">
               Request Call Back
