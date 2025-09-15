@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import image1 from '../assets/image1.png'
-import image2 from '../assets/image2 (1).png'
-import image3 from '../assets/image3.png'
-import image4 from '../assets/image4.png'
+import image1 from '../assets/image0.jpg'
+import image2 from '../assets/image9.jpg'
+import image3 from '../assets/image11.jpg'
+import image4 from '../assets/image6.jpg'
 
 export default function ImageCarousel() {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -29,7 +29,7 @@ export default function ImageCarousel() {
     {
       id: 3,
       title: "Quick Reports",
-      subtitle: "Fast Results Within 6 Hours",
+      subtitle: "Fast Results Within 3-6 Hours",
       description: "Get your test reports online quickly and securely",
       image: image3,
       buttonText: "Learn More",
@@ -90,7 +90,7 @@ export default function ImageCarousel() {
         </div>
 
         {/* Navigation Arrows */}
-        <button
+        {/* <button
           onClick={goToPrevious}
           className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white p-3 rounded-full transition-all duration-300 z-20"
           aria-label="Previous slide"
@@ -99,8 +99,8 @@ export default function ImageCarousel() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
         </button>
-        
-        <button
+         */}
+        {/* <button
           onClick={goToNext}
           className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white p-3 rounded-full transition-all duration-300 z-20"
           aria-label="Next slide"
@@ -108,10 +108,10 @@ export default function ImageCarousel() {
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
-        </button>
+        </button> */}
 
         {/* Dots Indicator */}
-        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
+        {/* <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
           {slides.map((_, index) => (
             <button
               key={index}
@@ -124,15 +124,15 @@ export default function ImageCarousel() {
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}
-        </div>
+        </div> */}
 
         {/* Progress Bar */}
-        <div className="absolute bottom-0 left-0 w-full h-1 bg-black bg-opacity-20 z-20">
+        {/* <div className="absolute bottom-0 left-0 w-full h-1 bg-black bg-opacity-20 z-20">
           <div 
             className="h-full bg-gradient-to-r from-yellow-400 to-orange-500 transition-all duration-100 ease-linear"
             style={{ width: `${((currentSlide + 1) / slides.length) * 100}%` }}
           />
-        </div>
+        </div> */}
     </div>
   )
 }

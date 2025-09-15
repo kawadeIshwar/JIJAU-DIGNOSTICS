@@ -18,7 +18,7 @@ function Home() {
   const [showMoreBiochemistry, setShowMoreBiochemistry] = useState(false)
   const [showMoreSerology, setShowMoreSerology] = useState(false)
   const [showMoreHistopathology, setShowMoreHistopathology] = useState(false)
-  
+
   const scrollToSection = (ref) => {
     ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
@@ -112,7 +112,7 @@ function Home() {
       price: '₹750'
     },
 
-   { name: 'HbA1c (Glycated Hemoglobin)', desc: 'Long-term overview of blood sugar control in diabetes.', price: '₹400' },
+    { name: 'HbA1c (Glycated Hemoglobin)', desc: 'Long-term overview of blood sugar control in diabetes.', price: '₹400' },
     {
       name: 'G6PD Test',
       desc: 'Diagnoses glucose-6-phosphate dehydrogenase deficiency.',
@@ -126,23 +126,21 @@ function Home() {
   ]
 
   const biochemistryTests = [
-    { name: 'Blood Glucose Test', desc: 'Measures blood sugar levels to diagnose diabetes and monitor its management.', price: '₹—' },
-    { name: 'Liver Function Tests (LFTs)', desc: 'ALT, AST, ALP, bilirubin, albumin to evaluate liver health.', price: '₹—' },
-    { name: 'Renal Function Tests (RFTs)', desc: 'Creatinine, BUN, and electrolytes to assess kidney function.', price: '₹—' },
-    { name: 'Lipid Profile', desc: 'Cholesterol, triglycerides, LDL, HDL for cardiac risk assessment.', price: '₹—' },
-    { name: 'Electrolyte Panel', desc: 'Sodium, potassium, chloride, bicarbonate for fluid/electrolyte balance.', price: '₹—' },
-    { name: 'Serum Proteins (Albumin and Globulin)', desc: 'Assesses nutritional status, liver function, and immune response.', price: '₹—' },
-    { name: 'Thyroid Function Tests (TFTs)', desc: 'T3, T4, and TSH to diagnose and monitor thyroid disorders.', price: '₹—' },
-    { name: 'Uric Acid', desc: 'Helps diagnose gout or kidney stones.', price: '₹—' },
-    { name: 'Calcium Test', desc: 'Checks calcium for bone health and parathyroid function.', price: '₹—' },
-    { name: 'Phosphorus', desc: 'Evaluates phosphorus for bone and kidney function.', price: '₹—' },
-    { name: 'Creatine Kinase (CK)', desc: 'Detects muscle damage or heart disease.', price: '₹—' },
-    { name: 'C-Reactive Protein (CRP)', desc: 'Marker of inflammation in infections or autoimmune disease.', price: '₹—' },
-    { name: 'Alkaline Phosphatase (ALP)', desc: 'Indicates liver or bone disorders.', price: '₹—' },
-    { name: 'Amylase and Lipase', desc: 'Pancreatic enzymes to diagnose pancreatitis.', price: '₹—' },
-    { name: 'Serum Iron and Ferritin', desc: 'Assesses iron stores and iron-deficiency anemia.', price: '₹—' },
-    { name: 'Vitamin D ', desc: 'Detects deficiencies affecting bone, nerve, and RBC production.', price: '₹1000' },
-    { name: 'Lactate Dehydrogenase (LDH)', desc: 'Indicates tissue damage or systemic diseases.', price: '₹500' },
+    { name: 'Blood Glucose Test (f & PP)', desc: 'Measures blood sugar levels to diagnose diabetes and monitor its management.', price: '₹130' },
+	{ name: 'Liver Function Tests (LFTs)', desc: 'ALT, AST, ALP, bilirubin, albumin to evaluate liver health.', price: '₹500' },
+    { name: 'Renal Function Tests (RFTs)', desc: 'Creatinine, BUN, Urea, Uric Acid, eGFR Ratio to assess kidney function.', price: '₹450' },
+    { name: 'Lipid Profile', desc: 'Cholesterol, triglycerides, LDL, HDL for cardiac risk assessment.', price: '₹500' },
+    { name: 'Electrolyte Panel', desc: 'Sodium, potassium, chloride, bicarbonate for fluid/electrolyte balance.', price: '₹350' },
+    { name: 'Serum Proteins (Albumin and Globulin)', desc: 'Assesses nutritional status, liver function, and immune response.', price: '₹200' },
+    { name: 'Thyroid Function Tests (TFTs)', desc: 'T3, T4, and TSH to diagnose and monitor thyroid disorders.', price: '₹400' },
+    { name: 'Uric Acid', desc: 'Helps diagnose gout or kidney stones.', price: '₹200' }, { name: 'Calcium Test', desc: 'Checks calcium for bone health and parathyroid function.', price: '₹200' },
+    { name: 'Phosphorus', desc: 'Evaluates phosphorus for bone and kidney function.', price: '₹500' },
+    { name: 'Creatine Kinase (CK)', desc: 'Detects muscle damage or heart disease.', price: '₹750' },
+    { name: 'C-Reactive Protein (CRP)', desc: 'Marker of inflammation in infections or autoimmune disease.', price: '₹300' },
+    { name: 'Alkaline Phosphatase (ALP)', desc: 'Indicates liver or bone disorders.', price: '₹200' },
+    { name: 'Amylase ', desc: 'Pancreatic enzymes to diagnose pancreatitis.', price: '₹500' },
+    { name: 'Lipase', desc: 'Pancreatic enzymes to diagnose pancreatitis.', price: '₹600' },
+    { name: 'Vitamin D', desc: 'Detects deficiencies affecting bone, nerve, and RBC production.', price: '₹1000' },
     { name: 'Bilirubin Test', desc: 'Measures bilirubin to diagnose jaundice or liver dysfunction.', price: '₹200' },
     { name: 'Hormonal Assays', desc: 'Estrogen, testosterone, prolactin, cortisol for endocrine function.', price: 'ask for details' }
   ]
@@ -163,7 +161,7 @@ function Home() {
     { name: 'Tuberculosis (TB) Tests', desc: 'Mantoux skin test.', price: '₹350' },
     { name: 'Anti-Nuclear Antibody (ANA)', desc: 'Autoantibodies used in diagnosing autoimmune diseases.', price: '₹900' },
     // { name: 'TORCH Panel', desc: 'Screens infections in pregnancy: Toxoplasma, Rubella, CMV, HSV.', price: '₹2500' },
-    { name: 'Covid-19 Antibody', desc: 'Detects antibodies indicating prior exposure to SARS-CoV-2.', price: '₹900' } ,
+    { name: 'Covid-19 Antibody', desc: 'Detects antibodies indicating prior exposure to SARS-CoV-2.', price: '₹900' },
     { name: 'Brucella Antibody', desc: 'Identifies antibodies for brucellosis.', price: '₹1850' },
     { name: 'Epstein-Barr Virus (EBV) Test', desc: 'Antibodies to diagnose infectious mononucleosis.', price: '₹1500' },
     { name: 'Helicobacter pylori Antibody', desc: 'Screens for H. pylori linked to peptic ulcers.', price: '₹1650' },
@@ -176,7 +174,7 @@ function Home() {
     { name: 'Semen Analysis', desc: 'Sperm count, motility, morphology for fertility assessment.', price: '₹350' },
     { name: 'Body Fluid Analysis', desc: 'Pleural, peritoneal, synovial, CSF for infection, inflammation, or cancer.', price: 'Ask for details' },
     { name: 'Sputum Examination', desc: 'Detects bacterial, fungal or mycobacterial infections (e.g., TB).', price: '₹400' },
-    { name: 'Pap Smear', desc: 'Screens for cervical cancer and cervical abnormalities.', price: '₹900' } ,
+    { name: 'Pap Smear', desc: 'Screens for cervical cancer and cervical abnormalities.', price: '₹900' },
     // { name: 'Biopsy Examination', desc: 'Histopathology of tissue for cancer or chronic inflammatory diseases.', price: '₹—' },
     // { name: 'Fluid Cytology', desc: 'Cells in pleural/peritoneal fluids for malignancy or infection.', price: '₹—' },
     // { name: 'Synovial Fluid Analysis', desc: 'Joint fluid tests for gout, arthritis, infection.', price: '₹—' },
@@ -306,12 +304,12 @@ function Home() {
 
           {/* Bottom Center - CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-16">
-            <button 
+            <button
               onClick={() => scrollToSection(bookingRef)}
               className="bg-gradient-to-r from-[#3B0F70] to-[#7F55B1] text-white px-8 py-4 rounded-xl font-bold text-lg hover:from-[#2B0A57] hover:to-[#5B2E98] transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
               Book Test Now
             </button>
-            <button 
+            <button
               onClick={() => scrollToSection(packagesTopRef)}
               className="border-2 border-black text-black px-8 py-4 rounded-xl font-bold text-lg hover:bg-gradient-to-r from-[#3B0F70] to-[#7F55B1] hover:text-white transition-all duration-300 transform hover:-translate-y-1">
               View All Tests
@@ -1078,7 +1076,7 @@ function Home() {
             </section>
 
             {/* Process */}
-            <section className="py-16 relative overflow-hidden" style={{ 
+            <section className="py-16 relative overflow-hidden" style={{
               background: 'linear-gradient(90deg, #f0e6ff 0%, #e6d9ff 100%)',
               width: '100vw',
               marginLeft: 'calc(-50vw + 50%)',
@@ -1094,13 +1092,13 @@ function Home() {
                 <div className="relative">
                   {/* Connecting Lines - Desktop */}
                   <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-purple-300 to-purple-500 transform -translate-y-1/2" style={{ zIndex: 0 }}></div>
-                  
+
                   <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 relative" style={{ zIndex: 1 }}>
                     {/* Step 1 */}
                     <div className="bg-white rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
                       <div className="relative mb-6">
-                        <div className="text-white w-14 h-14 rounded-full flex items-center justify-center text-xl font-bold absolute -top-3 -left-3" 
-                             style={{ backgroundColor: '#7F55B1', boxShadow: '0 0 0 5px #f0e6ff' }}>1</div>
+                        <div className="text-white w-14 h-14 rounded-full flex items-center justify-center text-xl font-bold absolute -top-3 -left-3"
+                          style={{ backgroundColor: '#7F55B1', boxShadow: '0 0 0 5px #f0e6ff' }}>1</div>
                         <div className="w-16 h-16 mx-auto">
                           <svg className="w-full h-full text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -1114,8 +1112,8 @@ function Home() {
                     {/* Step 2 */}
                     <div className="bg-white rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
                       <div className="relative mb-6">
-                        <div className="text-white w-14 h-14 rounded-full flex items-center justify-center text-xl font-bold absolute -top-3 -left-3" 
-                             style={{ backgroundColor: '#7F55B1', boxShadow: '0 0 0 5px #f0e6ff' }}>2</div>
+                        <div className="text-white w-14 h-14 rounded-full flex items-center justify-center text-xl font-bold absolute -top-3 -left-3"
+                          style={{ backgroundColor: '#7F55B1', boxShadow: '0 0 0 5px #f0e6ff' }}>2</div>
                         <div className="w-16 h-16 mx-auto">
                           <svg className="w-full h-full text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -1130,8 +1128,8 @@ function Home() {
                     {/* Step 3 */}
                     <div className="bg-white rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
                       <div className="relative mb-6">
-                        <div className="text-white w-14 h-14 rounded-full flex items-center justify-center text-xl font-bold absolute -top-3 -left-3" 
-                             style={{ backgroundColor: '#7F55B1', boxShadow: '0 0 0 5px #f0e6ff' }}>3</div>
+                        <div className="text-white w-14 h-14 rounded-full flex items-center justify-center text-xl font-bold absolute -top-3 -left-3"
+                          style={{ backgroundColor: '#7F55B1', boxShadow: '0 0 0 5px #f0e6ff' }}>3</div>
                         <div className="w-16 h-16 mx-auto">
                           <svg className="w-full h-full text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
@@ -1145,8 +1143,8 @@ function Home() {
                     {/* Step 4 */}
                     <div className="bg-white rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
                       <div className="relative mb-6">
-                        <div className="text-white w-14 h-14 rounded-full flex items-center justify-center text-xl font-bold absolute -top-3 -left-3" 
-                             style={{ backgroundColor: '#7F55B1', boxShadow: '0 0 0 5px #f0e6ff' }}>4</div>
+                        <div className="text-white w-14 h-14 rounded-full flex items-center justify-center text-xl font-bold absolute -top-3 -left-3"
+                          style={{ backgroundColor: '#7F55B1', boxShadow: '0 0 0 5px #f0e6ff' }}>4</div>
                         <div className="w-16 h-16 mx-auto">
                           <svg className="w-full h-full text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
@@ -1160,8 +1158,8 @@ function Home() {
                     {/* Step 5 */}
                     <div className="bg-white rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
                       <div className="relative mb-6">
-                        <div className="text-white w-14 h-14 rounded-full flex items-center justify-center text-xl font-bold absolute -top-3 -left-3" 
-                             style={{ backgroundColor: '#7F55B1', boxShadow: '0 0 0 5px #f0e6ff' }}>5</div>
+                        <div className="text-white w-14 h-14 rounded-full flex items-center justify-center text-xl font-bold absolute -top-3 -left-3"
+                          style={{ backgroundColor: '#7F55B1', boxShadow: '0 0 0 5px #f0e6ff' }}>5</div>
                         <div className="w-16 h-16 mx-auto">
                           <svg className="w-full h-full text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -1187,7 +1185,7 @@ function Home() {
             </section>
 
             {/* Footer */}
-            <footer className="text-white w-full" style={{ 
+            <footer className="text-white w-full" style={{
               background: 'linear-gradient(135deg, #642EAA 0%, #4A1F7A 50%, #2D1B69 100%)',
               width: '100vw',
               marginLeft: 'calc(-50vw + 50%)',
@@ -1240,14 +1238,14 @@ function Home() {
                         <span className="flex-shrink-0 mt-1">📞</span>
                         <p>
                           <a href="https://wa.me/918605941731" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">+91 8605941731</a>
-                          <br/>+91 2422299688
+                          <br />+91 2422299688
                         </p>
                       </div>
                       <div className="flex items-start gap-2">
                         <span className="flex-shrink-0 mt-1">📧</span>
                         <p>
-                          <a 
-                            href="mailto:smr.jijaupathologylab@gmail.com" 
+                          <a
+                            href="mailto:smr.jijaupathologylab@gmail.com"
                             className="hover:text-white transition-colors"
                           >
                             smr.jijaupathologylab@gmail.com
@@ -1256,13 +1254,13 @@ function Home() {
                       </div>
                       <div className="flex items-start gap-2">
                         <span className="flex-shrink-0 mt-1">📍</span>
-                        <a 
+                        <a
                           href="https://maps.app.goo.gl/MJEnATgUghqZ5SqZ9"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="leading-relaxed hover:text-white transition-colors"
                         >
-                          Ward no 6, Kamgar Hospital Road,<br/>Near Dr. Kawade Diagnostic,<br/>Shrirampur, Maharashtra 413709
+                          Ward no 6, Kamgar Hospital Road,<br />Near Dr. Kawade Diagnostic,<br />Shrirampur, Maharashtra 413709
                         </a>
                       </div>
                     </div>
