@@ -1,8 +1,10 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import ImageCarousel from '../ui/ImageCarousel'
 import SlidingText from '../ui/SlidingText'
 import Logo from '../assets/Logo.png'
+import Tests from "./Tests"
+import axios from 'axios';
 
 function Home() {
   const [bookingForm, setBookingForm] = useState({
@@ -18,6 +20,26 @@ function Home() {
   const [showMoreBiochemistry, setShowMoreBiochemistry] = useState(false)
   const [showMoreSerology, setShowMoreSerology] = useState(false)
   const [showMoreHistopathology, setShowMoreHistopathology] = useState(false)
+  
+  // States from Tests.jsx
+  const [tests, setTests] = useState([]);
+  const [filteredTests, setFilteredTests] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [sortBy, setSortBy] = useState('name');
+
+  // Categories from Tests.jsx
+  const categories = [
+    { value: 'all', label: 'All Tests' },
+    { value: 'blood', label: 'Blood Tests' },
+    { value: 'organ', label: 'Organ Function' },
+    { value: 'hormone', label: 'Hormone Tests' },
+    { value: 'diabetes', label: 'Diabetes' },
+    { value: 'cardiac', label: 'Cardiac' },
+    { value: 'vitamin', label: 'Vitamins' },
+    { value: 'inflammatory', label: 'Inflammatory' },
+    { value: 'urine', label: 'Urine Tests' }
+  ];
 
   const scrollToSection = (ref) => {
     ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -46,14 +68,66 @@ function Home() {
     setBookingForm({ name: '', phone: '', city: '', testType: '' })
   }
 
-  const popularTests = [
-    { name: 'Complete Blood Count (CBC)', price: '₹360', code: 'CBC001' },
-    { name: 'Liver Function Test (LFT)', price: '₹700', code: 'LFT001' },
-    { name: 'Thyroid Stimulating Hormone (TSH)', price: '₹400', code: 'TSH001' },
-    { name: 'C-reactive Protein (CRP)', price: '₹400', code: 'CRP001' },
-    { name: 'HbA1C (Diabetes)', price: '₹600', code: 'HBA001' },
-    { name: 'Lipid Profile', price: '₹650', code: 'LIP001' }
-  ]
+  const handleBookTest = (test) => {
+    alert(`Booking ${test.name} for ₹${test.price}. We will contact you shortly!`);
+  }
+
+  // Filter and sort tests
+  useEffect(() => {
+    let filtered = tests;
+
+    // Filter by search term
+    if (searchTerm) {
+      filtered = filtered.filter(test => 
+        test.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        test.info.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+
+    // Filter by category
+    if (selectedCategory !== 'all') {
+      filtered = filtered.filter(test => test.category === selectedCategory);
+    }
+
+    // Sort
+    filtered.sort((a, b) => {
+      switch (sortBy) {
+        case 'price-low':
+          return a.price - b.price;
+        case 'price-high':
+          return b.price - a.price;
+        case 'name':
+        default:
+          return a.name.localeCompare(b.name);
+      }
+    });
+
+    setFilteredTests(filtered);
+  }, [tests, searchTerm, selectedCategory, sortBy]);
+
+  // Initialize tests with mock data or fetch from API
+  useEffect(() => {
+    // Try to fetch from backend, fallback to mock data
+    axios.get('http://localhost:5000/api/tests')
+      .then(r => setTests(r.data))
+      .catch(() => setTests(mockTests));
+  }, []);
+
+  // Mock data for tests
+  const mockTests = [
+    { id: 1, name: 'Complete Blood Count (CBC)', price: 200, category: 'blood', info: 'Comprehensive blood analysis including red blood cells, white blood cells, and platelets', code: 'CBC001', fasting: false, reportTime: '2 hours' },
+    { id: 2, name: 'Liver Function Test (LFT)', price: 500, category: 'organ', info: 'Assessment of liver health through various enzymes and proteins', code: 'LFT001', fasting: false, reportTime: '2 hours' },
+    { id: 3, name: 'Thyroid Function Test (TFT)', price: 400, category: 'hormone', info: 'Measures thyroid function and helps diagnose thyroid disorders', code: 'TSH001', fasting: false, reportTime: '2 hours' },
+    { id: 4, name: 'C-reactive Protein (CRP)', price: 300, category: 'inflammatory', info: 'Measures inflammation levels in the body', code: 'CRP001', fasting: false, reportTime: '6 hours' },
+    { id: 5, name: 'HbA1C (Diabetes)', price: 400, category: 'diabetes', info: 'Measures average blood sugar levels over the past 2-3 months', code: 'HBA001', fasting: false, reportTime: '6 hours' },
+    { id: 6, name: 'Lipid Profile', price: 550, category: 'cardiac', info: 'Comprehensive cholesterol and lipid analysis', code: 'LIP001', fasting: true, reportTime: '2 hours' },
+    { id: 7, name: 'Kidney Function Test (KFT)', price: 450, category: 'organ', info: 'Assessment of kidney health and function', code: 'KFT001', fasting: false, reportTime: '2 hours' },
+    { id: 8, name: 'Vitamin D', price: 1000, category: 'vitamin', info: 'Measures vitamin D levels in the blood', code: 'VIT001', fasting: false, reportTime: '6 hours' },
+    { id: 9, name: 'Iron Studies', price: 500, category: 'blood', info: 'Comprehensive iron level analysis', code: 'IRN001', fasting: false, reportTime: '6 hours' },
+    { id: 10, name: 'Complete Urine Examination', price: 100, category: 'urine', info: 'Comprehensive urine analysis for various health indicators', code: 'UR001', fasting: false, reportTime: '2 hours' },
+    { id: 11, name: 'Diabetes Basic Panel(sugar Fasting & post prandial)', price: 130, category: 'diabetes', info: 'Basic diabetes screening including glucose and HbA1C', code: 'DB001', fasting: true, reportTime: '4 hours' },
+    { id: 12, name: 'Diabetes Advanced Panel(sugar Fasting & post prandial-HBA1C)', price: 500, category: 'diabetes', info: 'Comprehensive diabetes assessment with multiple parameters', code: 'DB002', fasting: true, reportTime: '6 hours' }
+  ];
 
   const hematologyTests = [
     {
@@ -210,9 +284,9 @@ function Home() {
   ]
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-purple-50 via-white to-purple-100" style={{ paddingBottom: '0' }}>
+    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-purple-50 via-white to-purple-100" style={{ paddingBottom: '0', paddingTop: '80px' }}>
       {/* Header */}
-      <header className="shadow-2xl sticky top-0 z-50 backdrop-blur-md border-b border-purple-200" style={{ backgroundColor: '#662fa9', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.1)' }}>
+      <header className="fixed w-full top-0 z-50 backdrop-blur-md border-b border-purple-200" style={{ backgroundColor: '#662fa9', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.1)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             <div className="flex items-center">
@@ -994,33 +1068,104 @@ function Home() {
               </div>
             </details>
 
-            {/* Popular Tests */}
+            {/* All Tests Section */}
             <section className="py-16 bg-secondary-50">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-12">
-                  <h2 className="text-3xl font-bold text-secondary-900 mb-4">Our Popular Tests</h2>
-                  <p className="text-lg text-secondary-600">Choose from our wide range of diagnostic tests</p>
+                  <h2 className="text-3xl font-bold text-secondary-900 mb-4">All Available Tests</h2>
+                  <p className="text-lg text-secondary-600">Search and explore our comprehensive range of diagnostic tests</p>
                 </div>
 
+                {/* Filters */}
+                <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-secondary-700 mb-2">Search Tests</label>
+                      <input
+                        type="text"
+                        placeholder="Search by test name or description..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-secondary-700 mb-2">Category</label>
+                      <select
+                        value={selectedCategory}
+                        onChange={(e) => setSelectedCategory(e.target.value)}
+                        className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                      >
+                        {categories.map(category => (
+                          <option key={category.value} value={category.value}>{category.label}</option>
+                        ))}
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-secondary-700 mb-2">Sort By</label>
+                      <select
+                        value={sortBy}
+                        onChange={(e) => setSortBy(e.target.value)}
+                        className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                      >
+                        <option value="name">Name (A-Z)</option>
+                        <option value="price-low">Price (Low to High)</option>
+                        <option value="price-high">Price (High to Low)</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Tests Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {popularTests.map((test, index) => (
-                    <div key={index} className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow p-6">
+                  {filteredTests.map(test => (
+                    <div key={test.id} className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow p-6">
                       <div className="flex justify-between items-start mb-4">
                         <h3 className="text-lg font-semibold text-secondary-900">{test.name}</h3>
-                        <span className="font-bold" style={{ color: '#7F55B1' }}>{test.price}</span>
+                        <span className="text-primary-600 font-bold text-xl">₹{test.price}</span>
                       </div>
-                      <p className="text-sm text-secondary-600 mb-4">Test Code: {test.code}</p>
+                      
+                      <div className="mb-4">
+                        <p className="text-sm text-secondary-600 mb-2">{test.info}</p>
+                        <div className="flex flex-wrap gap-2 text-xs">
+                          <span className="bg-primary-100 text-primary-700 px-2 py-1 rounded-full">
+                            Code: {test.code}
+                          </span>
+                          <span className={`px-2 py-1 rounded-full ${test.fasting ? 'bg-yellow-100 text-yellow-700' : 'bg-green-100 text-green-700'}`}>
+                            {test.fasting ? 'Fasting Required' : 'No Fasting'}
+                          </span>
+                          <span className="bg-blue-100 text-blue-700 px-2 py-1 rounded-full">
+                            Report: {test.reportTime}
+                          </span>
+                        </div>
+                      </div>
+
                       <div className="flex gap-2">
-                        <button className="flex-1 text-white py-2 px-4 rounded-lg text-sm font-medium transition-colors" style={{ backgroundColor: '#7F55B1' }} onMouseEnter={(e) => e.target.style.backgroundColor = '#6B46A3'} onMouseLeave={(e) => e.target.style.backgroundColor = '#7F55B1'}>
+                        <button 
+                          onClick={() => handleBookTest(test)}
+                          className="flex-1 bg-primary-600 hover:bg-primary-700 text-white py-2 px-4 rounded-lg text-sm font-medium transition-colors"
+                        >
                           Book Now
                         </button>
-                        <button className="flex-1 border py-2 px-4 rounded-lg text-sm font-medium transition-colors" style={{ borderColor: '#7F55B1', color: '#7F55B1' }} onMouseEnter={(e) => { e.target.style.backgroundColor = '#7F55B1'; e.target.style.color = 'white' }} onMouseLeave={(e) => { e.target.style.backgroundColor = 'transparent'; e.target.style.color = '#7F55B1' }}>
+                        <button className="flex-1 border border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white py-2 px-4 rounded-lg text-sm font-medium transition-colors">
                           View Details
                         </button>
                       </div>
                     </div>
                   ))}
                 </div>
+
+                {filteredTests.length === 0 && (
+                  <div className="text-center py-12">
+                    <div className="bg-white rounded-xl shadow-lg p-8">
+                      <svg className="w-16 h-16 text-secondary-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.5-.804-6.207-2.146M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      <h3 className="text-lg font-semibold text-secondary-900 mb-2">No tests found</h3>
+                      <p className="text-secondary-600">Try adjusting your search criteria or browse all tests.</p>
+                    </div>
+                  </div>
+                )}
               </div>
             </section>
 
