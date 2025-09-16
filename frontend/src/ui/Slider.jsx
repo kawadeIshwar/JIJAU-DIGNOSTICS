@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
-import slide1 from '../assets/slide1.svg'
-import slide2 from '../assets/slide2.svg'
-import slide3 from '../assets/slide3.svg'
+import slide1 from '../assets/slide12.jpg'
+import slide2 from '../assets/slide13.jpg'
+import slide3 from '../assets/slide14.jpg'
 import './slider.css'
 
 const slides = [

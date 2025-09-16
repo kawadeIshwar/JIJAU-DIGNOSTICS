@@ -41,7 +41,7 @@ export default function SlidingText() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length)
-    }, 5000) // Change slide every 5 seconds
+    }, 3000) // Change slide every 3 seconds
 
     return () => clearInterval(timer)
   }, [slides.length])

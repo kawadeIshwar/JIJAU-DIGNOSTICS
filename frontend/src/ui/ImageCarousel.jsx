@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import image1 from '../assets/image0.jpg'
-import image2 from '../assets/image9.jpg'
-import image3 from '../assets/image11.jpg'
-import image4 from '../assets/image6.jpg'
+import image1 from '../assets/image13.jpg'
+import image2 from '../assets/image3.png'
+import image3 from '../assets/image4.png'
+import image4 from '../assets/image99.png'
 
 export default function ImageCarousel() {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -49,7 +49,7 @@ export default function ImageCarousel() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length)
-    }, 5000) // Change slide every 5 seconds
+      }, 3000) // Change slide every 3 seconds
 
     return () => clearInterval(timer)
   }, [slides.length])
