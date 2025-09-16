@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import ImageCarousel from '../ui/ImageCarousel'
 import SlidingText from '../ui/SlidingText'
 import Logo from '../assets/Logo.png'
-import Tests from "./Tests"
 import axios from 'axios';
 
 function Home() {
@@ -113,14 +112,7 @@ function Home() {
     setFilteredTests(filtered);
   }, [tests, searchTerm, selectedCategory, sortBy]);
 
-  // Initialize tests with mock data or fetch from API
-  useEffect(() => {
-    // Try to fetch from backend, fallback to mock data
-    axios.get('http://localhost:5000/api/tests')
-      .then(r => setTests(r.data))
-      .catch(() => setTests(mockTests));
-  }, []);
-
+ 
   // Mock data for tests
   const mockTests = [
     { id: 1, name: 'Complete Blood Count (CBC)', price: 200, category: 'blood', info: 'Comprehensive blood analysis including red blood cells, white blood cells, and platelets', code: 'CBC001', fasting: false, reportTime: '2 hours' },
@@ -309,7 +301,7 @@ function Home() {
             <nav className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
                 <Link to="/" className="text-white hover:text-purple-200 px-4 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white/20 rounded-lg">Home</Link>
-                <Link to="/tests" className="text-white hover:text-purple-200 px-4 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white/20 rounded-lg">Tests</Link>
+
                 {/* <Link to="/login" className="text-white hover:text-purple-200 px-4 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white/20 rounded-lg">Login</Link> */}
                 <a href="https://wa.me/918605941731" target="_blank" rel="noopener noreferrer" className="text-white hover:text-purple-200 px-4 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white/20 rounded-lg inline-flex items-center gap-2">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" className="w-4 h-4" fill="currentColor">
@@ -360,7 +352,7 @@ function Home() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           {/* Top Center - Main Heading */}
           <div className="text-center mb-8">
-            <h1 className="text-4xl lg:text-6xl font-extrabold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-[#9760de] via-[#7745b4] to-[#8647dd] mb-3" style={{ textShadow: '0 2px 6px rgba(0,0,0,0.25)' }}>
+            <h1 className="text-4xl lg:text-6xl font-extrabold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-[#9760de] via-[#7956a8] to-[#8647dd] mb-3" style={{ textShadow: '0 2px 6px rgba(0,0,0,0.25)' }}>
               Your Health, Our Priority
             </h1>
             <p className="text-xl text-purple-600 leading-relaxed max-w-4xl mx-auto">
@@ -388,7 +380,7 @@ function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-16">
             <button
               onClick={() => scrollToSection(bookingRef)}
-              className="bg-gradient-to-r from-[#3B0F70] to-[#7F55B1] text-white px-8 py-4 rounded-xl font-bold text-lg hover:from-[#2B0A57] hover:to-[#5B2E98] transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
+              className="bg-gradient-to-r from-[#7e47c2] to-[#7F55B1] text-white px-8 py-4 rounded-xl font-bold text-lg hover:from-[#2B0A57] hover:to-[#5B2E98] transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
               Book Test Now
             </button>
             <button
@@ -584,7 +576,7 @@ function Home() {
             <div className="bg-white rounded-2xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-500 hover:shadow-3xl border border-purple-100 h-full flex flex-col group">
               <div className="px-6 py-6" style={{ backgroundColor: '#642EAA' }}>
                 <h3 className="text-xl font-bold text-white uppercase">JIJAU ACTIVE CARE</h3>
-                <p className="text-purple-100 text-sm mt-1">72 Comprehensive Tests</p>
+                <p className="text-purple-100 text-sm mt-1">72 Tests</p>
               </div>
 
               <div className="p-6 bg-gray-50 flex flex-col flex-grow">
@@ -653,7 +645,7 @@ function Home() {
               </div>
               <div className="px-6 py-4" style={{ backgroundColor: '#642EAA' }}>
                 <h3 className="text-xl font-bold text-white uppercase">JIJAU ACTIVE CARE +</h3>
-                <p className="text-white text-sm mt-1">95 Test</p>
+                <p className="text-white text-sm mt-1">95 Tests</p>
               </div>
 
               <div className="p-6 bg-gray-50 flex flex-col flex-grow">
@@ -727,7 +719,7 @@ function Home() {
             <div className="bg-white rounded-xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-300 h-full flex flex-col">
               <div className="px-6 py-4" style={{ backgroundColor: '#642EAA' }}>
                 <h3 className="text-xl font-bold text-white uppercase">JIJAU WOMEN'S CARE</h3>
-                <p className="text-white text-sm mt-1">157 Test</p>
+                <p className="text-white text-sm mt-1">157 Tests</p>
               </div>
 
               <div className="p-6 bg-gray-50 flex flex-col flex-grow">
@@ -803,7 +795,7 @@ function Home() {
                 <div className="bg-white rounded-2xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-500 hover:shadow-3xl border border-purple-100 h-full flex flex-col">
                   <div className="px-6 py-6" style={{ backgroundColor: '#642EAA' }}>
                     <h3 className="text-xl font-bold text-white uppercase">JIJAU DIABETIC CARE</h3>
-                    <p className="text-purple-100 text-sm mt-1">45 Essential Tests</p>
+                    <p className="text-purple-100 text-sm mt-1">45 Tests</p>
                   </div>
                   <div className="p-6 bg-gray-50 flex flex-col flex-grow">
                     <div className="text-center mb-6">
@@ -1422,7 +1414,7 @@ function Home() {
                   <div>
                     <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
                     <ul className="space-y-2 text-secondary-300">
-                      <li><Link to="/tests" className="hover:text-white">All Tests</Link></li>
+
                       <li><Link to="/login" className="hover:text-white">Login</Link></li>
                       <li><button onClick={() => scrollToSection(bookingRef)} className="text-secondary-300 hover:text-white">Book Appointment</button></li>
                       <li><button onClick={() => scrollToSection(packagesTopRef)} className="text-secondary-300 hover:text-white">Explore Packages</button></li>
