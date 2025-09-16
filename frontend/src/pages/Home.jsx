@@ -29,6 +29,11 @@ function Home() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [sortBy, setSortBy] = useState('name');
 
+  // Set initial tests data
+  useEffect(() => {
+    setTests(mockTests);
+  }, []);
+
   // Categories from Tests.jsx
   const categories = [
     { value: 'all', label: 'All Tests' },
