@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 import ImageCarousel from '../ui/ImageCarousel'
 import SlidingText from '../ui/SlidingText'
 import Logo from '../assets/Logo.png'
-import axios from 'axios';
+
+
 
 function Home() {
   const [bookingForm, setBookingForm] = useState({
@@ -40,6 +41,8 @@ function Home() {
     { value: 'inflammatory', label: 'Inflammatory' },
     { value: 'urine', label: 'Urine Tests' }
   ];
+  const [menuOpen, setMenuOpen] = useState(false);
+
 
   const scrollToSection = (ref) => {
     ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -286,67 +289,139 @@ function Home() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-purple-50 via-white to-purple-100" style={{ paddingBottom: '0', paddingTop: '80px' }}>
       {/* Header */}
-      <header className="fixed w-full top-0 z-50 backdrop-blur-md border-b border-purple-200" style={{ backgroundColor: '#662fa9', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.1)' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
-            <div className="flex items-center">
-              <div className="flex-shrink-0">
-                <img
-                  src={Logo}
-                  alt="JIJAU Pathology Laboratory"
-                  className="h-20 w-auto"
-                />
-              </div>
-            </div>
-            <nav className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-4">
-                <Link to="/" className="text-white hover:text-purple-200 px-4 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white/20 rounded-lg">Home</Link>
+<header
+      className="fixed w-full top-0 z-50 backdrop-blur-md border-b border-purple-200"
+      style={{
+        backgroundColor: "#662fa9",
+        boxShadow:
+          "0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.1)",
+      }}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
+          {/* Logo */}
+          <div className="flex-shrink-0">
+            <img
+              src={Logo}
+              alt="JIJAU Pathology Laboratory"
+              className="h-20 w-auto"
+            />
+          </div>
 
-                {/* <Link to="/login" className="text-white hover:text-purple-200 px-4 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white/20 rounded-lg">Login</Link> */}
-                <a href="https://wa.me/918605941731" target="_blank" rel="noopener noreferrer" className="text-white hover:text-purple-200 px-4 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white/20 rounded-lg inline-flex items-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" className="w-4 h-4" fill="currentColor">
-                    <path d="M19.11 17.12a5.61 5.61 0 0 1-2.41-.61c-.74-.35-1.58-.78-2.58-1.79s-2-2.53-2.31-3.2a6.1 6.1 0 0 1-.61-2.41 2.67 2.67 0 0 1 .86-2 1 1 0 0 1 .72-.32h.54a.68.68 0 0 1 .5.41l.77 1.8a.67.67 0 0 1 0 .52 1.77 1.77 0 0 1-.25.4c-.14.16-.28.34-.39.46a.84.84 0 0 0-.17.33c0 .12 0 .25.19.49a9.81 9.81 0 0 0 1.76 2.19 8.64 8.64 0 0 0 2 1.38c.24.11.37.1.5 0a3.34 3.34 0 0 0 .35-.3l.1-.1a.67.67 0 0 1 .67-.17l1.84.77a.68.68 0 0 1 .41.5v.54a1 1 0 0 1-.32.72 2.69 2.69 0 0 1-2.01.86ZM16 3a13 13 0 0 0-11 19.66L3.34 28l5.5-1.62A13 13 0 1 0 16 3Zm0-2a15 15 0 1 1 0 30 15 15 0 0 1-4.85-.8L2 31l1.88-9.1A15 15 0 0 1 16 1Z" />
-                  </svg>
-                  +91 8605941731
-                </a>
-                <a href="tel:+91 02422299688" className="text-white hover:text-purple-200 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white/20 rounded-lg inline-flex items-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.69l1.2 3.6a1 1 0 01-.27 1.07l-2.02 2.02a16 16 0 006.36 6.36l2.02-2.02a1 1 0 011.07-.27l3.6 1.2a1 1 0 01.69.95V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                  +91 2422299688
-                </a>
-                <a href="https://maps.app.goo.gl/MJEnATgUghqZ5SqZ9" target="_blank" rel="noopener noreferrer" className="text-white hover:text-purple-200 px-4 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white/20 rounded-lg inline-flex items-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5Z" />
-                  </svg>
-                  Find Us
-                </a>
-              </div>
-            </nav>
-            <div className="md:hidden space-x-2 flex items-center">
-              <a href="https://wa.me/918605941731" target="_blank" rel="noopener noreferrer" className="text-white px-2 py-1 text-xs font-semibold rounded inline-flex items-center gap-1">
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5" viewBox="0 0 32 32" fill="currentColor">
+          {/* Desktop Nav */}
+          <nav className="hidden md:block">
+            <div className="ml-10 flex items-baseline space-x-4">
+              <Link
+                to="/"
+                className="text-white hover:text-purple-200 px-4 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white/20 rounded-lg"
+              >
+                Home
+              </Link>
+              <a
+                href="https://wa.me/918605941731"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-purple-200 px-4 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white/20 rounded-lg inline-flex items-center gap-2"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 32 32"
+                  className="w-4 h-4"
+                  fill="currentColor"
+                >
                   <path d="M19.11 17.12a5.61 5.61 0 0 1-2.41-.61c-.74-.35-1.58-.78-2.58-1.79s-2-2.53-2.31-3.2a6.1 6.1 0 0 1-.61-2.41 2.67 2.67 0 0 1 .86-2 1 1 0 0 1 .72-.32h.54a.68.68 0 0 1 .5.41l.77 1.8a.67.67 0 0 1 0 .52 1.77 1.77 0 0 1-.25.4c-.14.16-.28.34-.39.46a.84.84 0 0 0-.17.33c0 .12 0 .25.19.49a9.81 9.81 0 0 0 1.76 2.19 8.64 8.64 0 0 0 2 1.38c.24.11.37.1.5 0a3.34 3.34 0 0 0 .35-.3l.1-.1a.67.67 0 0 1 .67-.17l1.84.77a.68.68 0 0 1 .41.5v.54a1 1 0 0 1-.32.72 2.69 2.69 0 0 1-2.01.86Z" />
                 </svg>
                 +91 8605941731
               </a>
-              <a href="tel:+91 02422299688" className="text-white px-2 py-1 text-xs font-semibold rounded inline-flex items-center gap-1">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" className="w-3.5 h-3.5" fill="currentColor">
-                  <path d="M19.11 17.12a5.61 5.61 0 0 1-2.41-.61c-.74-.35-1.58-.78-2.58-1.79s-2-2.53-2.31-3.2a6.1 6.1 0 0 1-.61-2.41 2.67 2.67 0 0 1 .86-2 1 1 0 0 1 .72-.32h.54a.68.68 0 0 1 .5.41l.77 1.8a.67.67 0 0 1 0 .52 1.77 1.77 0 0 1-.25.4c-.14.16-.28.34-.39.46a.84.84 0 0 0-.17.33c0 .12 0 .25.19.49a9.81 9.81 0 0 0 1.76 2.19 8.64 8.64 0 0 0 2 1.38c.24.11.37.1.5 0a3.34 3.34 0 0 0 .35-.3l.1-.1a.67.67 0 0 1 .67-.17l1.84.77a.68.68 0 0 1 .41.5v.54a1 1 0 0 1-.32.72 2.69 2.69 0 0 1-2.01.86ZM16 3a13 13 0 0 0-11 19.66L3.34 28l5.5-1.62A13 13 0 1 0 16 3Zm0-2a15 15 0 1 1 0 30 15 15 0 0 1-4.85-.8L2 31l1.88-9.1A15 15 0 0 1 16 1Z" />
-                </svg>
-                +91 2422299688
+              <a
+                href="tel:+91 02422299688"
+                className="text-white hover:text-purple-200 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white/20 rounded-lg inline-flex items-center gap-2"
+              >
+                📞 +91 2422299688
               </a>
-              <a href="https://maps.app.goo.gl/MJEnATgUghqZ5SqZ9" target="_blank" rel="noopener noreferrer" className="text-white px-2 py-1 text-xs font-semibold rounded inline-flex items-center gap-1">
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5Z" />
-                </svg>
-                Address
+              <a
+                href="https://maps.app.goo.gl/MJEnATgUghqZ5SqZ9"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-purple-200 px-4 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white/20 rounded-lg inline-flex items-center gap-2"
+              >
+                📍 Find Us
               </a>
             </div>
+          </nav>
+
+          {/* Mobile Hamburger */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="text-white focus:outline-none"
+            >
+              {menuOpen ? (
+                // Close Icon
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-7 w-7"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                // Hamburger Icon
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-7 w-7"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
           </div>
         </div>
-      </header>
+      </div>
 
+      {/* Mobile Dropdown Menu */}
+      {menuOpen && (
+        <div className="md:hidden bg-[#662fa9] px-4 pb-4 space-y-2">
+          <Link
+            to="/"
+            className="block text-white hover:text-purple-200 px-3 py-2 rounded-lg font-semibold"
+            onClick={() => setMenuOpen(false)}
+          >
+            Home
+          </Link>
+          <a
+            href="https://wa.me/918605941731"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block text-white hover:text-purple-200 px-3 py-2 rounded-lg font-semibold"
+            onClick={() => setMenuOpen(false)}
+          >
+            WhatsApp
+          </a>
+          <a
+            href="tel:+91 02422299688"
+            className="block text-white hover:text-purple-200 px-3 py-2 rounded-lg font-semibold"
+            onClick={() => setMenuOpen(false)}
+          >
+            Call
+          </a>
+          <a
+            href="https://maps.app.goo.gl/MJEnATgUghqZ5SqZ9"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block text-white hover:text-purple-200 px-3 py-2 rounded-lg font-semibold"
+            onClick={() => setMenuOpen(false)}
+          >
+            Find Us
+          </a>
+        </div>
+      )}
+    </header>
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-purple-50 via-white to-purple-100">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
