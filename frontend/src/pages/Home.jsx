@@ -360,7 +360,7 @@ function Home() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           {/* Top Center - Main Heading */}
           <div className="text-center mb-8">
-            <h1 className="text-4xl lg:text-6xl font-extrabold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-[#2B0A57] via-[#3B0F70] to-[#5B2E98] mb-3" style={{ textShadow: '0 2px 6px rgba(0,0,0,0.25)' }}>
+            <h1 className="text-4xl lg:text-6xl font-extrabold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-[#9760de] via-[#7745b4] to-[#8647dd] mb-3" style={{ textShadow: '0 2px 6px rgba(0,0,0,0.25)' }}>
               Your Health, Our Priority
             </h1>
             <p className="text-xl text-purple-600 leading-relaxed max-w-4xl mx-auto">
