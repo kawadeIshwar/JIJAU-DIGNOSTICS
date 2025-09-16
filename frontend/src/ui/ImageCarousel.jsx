@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import image1 from '../assets/image13.jpg'
-import image2 from '../assets/image3.png'
-import image3 from '../assets/image4.png'
-import image4 from '../assets/image99.png'
+import image1 from '../assets/image1.png'
+import image2 from '../assets/image2.png'
+import image3 from '../assets/image3.png'
+import image4 from '../assets/image4.png'
 
 export default function ImageCarousel() {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -67,7 +67,7 @@ export default function ImageCarousel() {
   }
 
   return (
-    <div className="relative w-full h-[250px] md:h-[320px] overflow-hidden rounded-2xl shadow-2xl bg-white">
+    <div className="relative w-full h-screen overflow-hidden bg-white">
         {/* Slides */}
         <div className="relative w-full h-full">
           {slides.map((slide, index) => (

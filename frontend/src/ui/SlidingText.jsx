@@ -47,7 +47,7 @@ export default function SlidingText() {
   }, [slides.length])
 
   return (
-    <div className="relative w-full h-[250px] md:h-[320px] flex items-center justify-center">
+    <div className="relative w-full h-screen flex items-center justify-center">
       {/* Text Content */}
       <div className="text-center text-gray-700 px-4 sm:px-6 lg:px-8 max-w-4xl">
         <h2 className="text-2xl md:text-3xl font-bold mb-3 animate-fade-in">

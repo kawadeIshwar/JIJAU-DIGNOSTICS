@@ -339,7 +339,7 @@ function Home() {
                 +91 8605941731
               </a>
               <a
-                href="tel:+91 02422299688"
+                href="tel:+91 2422299688"
                 className="text-white hover:text-purple-200 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white/20 rounded-lg inline-flex items-center gap-2"
               >
                 📞 +91 2422299688
@@ -428,45 +428,28 @@ function Home() {
       )}
     </header>
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-purple-50 via-white to-purple-100">
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          {/* Top Center - Main Heading */}
-          <div className="text-center mb-8">
-            <h1 className="text-4xl lg:text-6xl font-extrabold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-[#9760de] via-[#7956a8] to-[#8647dd] mb-3" style={{ textShadow: '0 2px 6px rgba(0,0,0,0.25)' }}>
-              Your Health, Our Priority
-            </h1>
-            <p className="text-xl text-purple-600 leading-relaxed max-w-4xl mx-auto">
-              Get accurate blood test results from the comfort of your home.
-              Our certified lab technicians ensure precision, speed, and reliability.
-            </p>
+      <section className="relative overflow-hidden bg-gradient-to-br from-purple-50 via-white to-purple-100 min-h-screen">
+        <div className="flex w-full h-full relative items-center justify-center px-20">
+          {/* Left Side - Illustration */}
+          <div className="w-1/2 flex justify-center">
+            <img
+              src="/src/assets/image1.png"
+              alt="Professional Service Illustration"
+              className="max-w-full max-h-[500px] object-contain"
+              style={{ filter: 'none' }}
+            />
           </div>
 
-          {/* Main Content Grid */}
-          <div className="bg-white rounded-2xl shadow-2xl p-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-              {/* Left Side - Image Carousel */}
-              <div className="order-first">
-                <ImageCarousel />
-              </div>
-
-              {/* Right Side - Sliding Text Content */}
-              <div className="order-last lg:order-last">
-                <SlidingText />
-              </div>
-            </div>
-          </div>
-
-          {/* Bottom Center - CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-16">
+          {/* Right Side - Text Content */}
+          <div className="w-1/2 bg-white bg-opacity-80 p-12 rounded-lg shadow-lg flex flex-col justify-center">
+            <h1 className="text-4xl font-extrabold text-gray-900 mb-4">Professional Service</h1>
+            <h2 className="text-xl font-semibold text-gray-700 mb-2">Expert Care You Can Trust</h2>
+            <p className="text-gray-600 mb-6">Certified professionals delivering exceptional healthcare services</p>
             <button
+              className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold py-3 px-8 rounded-lg shadow-md hover:from-yellow-500 hover:to-orange-600 transition-colors duration-300"
               onClick={() => scrollToSection(bookingRef)}
-              className="bg-gradient-to-r from-[#7e47c2] to-[#7F55B1] text-white px-8 py-4 rounded-xl font-bold text-lg hover:from-[#2B0A57] hover:to-[#5B2E98] transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
-              Book Test Now
-            </button>
-            <button
-              onClick={() => scrollToSection(packagesTopRef)}
-              className="border-2 border-black text-black px-8 py-4 rounded-xl font-bold text-lg hover:bg-gradient-to-r from-[#3B0F70] to-[#7F55B1] hover:text-white transition-all duration-300 transform hover:-translate-y-1">
-              View All Tests
+            >
+              Get Started
             </button>
           </div>
         </div>
@@ -1184,8 +1167,8 @@ function Home() {
             <section className="py-16 bg-secondary-50">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-12">
-                  <h2 className="text-3xl font-bold text-secondary-900 mb-4">All Available Tests</h2>
-                  <p className="text-lg text-secondary-600">Search and explore our comprehensive range of diagnostic tests</p>
+                  <h2 className="text-3xl font-bold text-secondary-900 mb-4">Our Popular Tests</h2>
+                  <p className="text-lg text-secondary-600">Search and explore our comprehensive range of Blood tests</p>
                 </div>
 
                 {/* Filters */}
@@ -1539,7 +1522,7 @@ function Home() {
 
                 {/* Copyright Section */}
                 <div className="border-t border-white/10 mt-12 pt-8 text-center">
-                  <p className="text-gray-300">&copy; 2025 JIJAU Pathology Laboratory. All rights reserved.</p>
+                  <p className="text-gray-300">&copy; 2025 JIJAU Pathology Lab. All rights reserved.</p>
                 </div>
               </div>
             </footer>
