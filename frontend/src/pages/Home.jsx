@@ -10,8 +10,9 @@ function Home() {
   const [bookingForm, setBookingForm] = useState({
     name: '',
     phone: '',
-    city: '',
-    testType: ''
+    address: '',
+    testType: '',
+    customTestType: ''
   })
   const [showMorePackages, setShowMorePackages] = useState(false)
   const packagesTopRef = useRef(null)
@@ -64,8 +65,15 @@ function Home() {
   const handleBookingSubmit = (e) => {
     e.preventDefault()
     // Handle booking submission
+    const finalTestType = bookingForm.testType === 'other' ? bookingForm.customTestType : bookingForm.testType
     alert('Booking request submitted! We will call you shortly.')
-    setBookingForm({ name: '', phone: '', city: '', testType: '' })
+    setBookingForm({ 
+      name: '', 
+      phone: '', 
+      address: '', 
+      testType: '', 
+      customTestType: '' 
+    })
   }
 
   const handleBookTest = (test) => {
@@ -464,56 +472,88 @@ function Home() {
                 <p className="text-gray-600">Fill the form and we'll call you within 15 minutes</p>
               </div>
 
-              <form onSubmit={handleBookingSubmit} className="space-y-6">
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Full Name *</label>
-                  <input
-                    type="text"
-                    required
-                    value={bookingForm.name}
-                    onChange={(e) => setBookingForm({ ...bookingForm, name: e.target.value })}
-                    className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:border-purple-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white"
-                    placeholder="Enter your full name"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Phone Number *</label>
-                  <input
-                    type="tel"
-                    required
-                    value={bookingForm.phone}
-                    onChange={(e) => setBookingForm({ ...bookingForm, phone: e.target.value })}
-                    className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:border-purple-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white"
-                    placeholder="Enter your phone number"
-                  />
+              <form onSubmit={handleBookingSubmit} className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-1">Full Name *</label>
+                    <input
+                      type="text"
+                      required
+                      value={bookingForm.name}
+                      onChange={(e) => setBookingForm({ ...bookingForm, name: e.target.value })}
+                      className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:ring-2 focus:border-purple-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white"
+                      placeholder="Enter your full name"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-1">Phone Number *</label>
+                    <input
+                      type="tel"
+                      required
+                      value={bookingForm.phone}
+                      onChange={(e) => setBookingForm({ ...bookingForm, phone: e.target.value })}
+                      className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:ring-2 focus:border-purple-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white"
+                      placeholder="Enter your phone number"
+                    />
+                  </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Test Type</label>
-                  <select
-                    value={bookingForm.testType}
-                    onChange={(e) => setBookingForm({ ...bookingForm, testType: e.target.value })}
-                    className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:border-purple-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white"
-                  >
-                    <option value="">Select test type</option>
-                    <option value="cbc">Complete Blood Count</option>
-                    <option value="lft">Liver Function Test</option>
-                    <option value="thyroid">Thyroid Test</option>
-                    <option value="diabetes">Diabetes Panel</option>
-                    <option value="lipid">Lipid Profile</option>
-                    <option value="other">Other</option>
-                  </select>
+                  <label className="block text-sm font-semibold text-gray-700 mb-1">Complete Address *</label>
+                  <textarea
+                    required
+                    value={bookingForm.address}
+                    onChange={(e) => setBookingForm({ ...bookingForm, address: e.target.value })}
+                    className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:ring-2 focus:border-purple-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white"
+                    placeholder="Enter your complete address"
+                    rows="2"
+                  />
                 </div>
+
+                <div className="space-y-3">
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-1">Test Type *</label>
+                    <select
+                      required
+                      value={bookingForm.testType}
+                      onChange={(e) => setBookingForm({ ...bookingForm, testType: e.target.value })}
+                      className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:ring-2 focus:border-purple-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white"
+                    >
+                      <option value="">Select test type</option>
+                      <option value="cbc">Complete Blood Count</option>
+                      <option value="lft">Liver Function Test</option>
+                      <option value="thyroid">Thyroid Test</option>
+                      <option value="diabetes">Diabetes Panel</option>
+                      <option value="lipid">Lipid Profile</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                  
+                  {bookingForm.testType === 'other' && (
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-1">Specify Test Type *</label>
+                      <input
+                        type="text"
+                        required
+                        value={bookingForm.customTestType}
+                        onChange={(e) => setBookingForm({ ...bookingForm, customTestType: e.target.value })}
+                        className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:ring-2 focus:border-purple-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white"
+                        placeholder="Enter the test type you need"
+                      />
+                    </div>
+                  )}
+                </div>
+
                 <button
                   type="submit"
-                  className="w-full py-4 px-6 text-white rounded-xl font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  className="w-full py-3 px-6 text-white rounded-lg font-bold text-base transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                   style={{ backgroundColor: '#642EAA' }}
                   onMouseEnter={(e) => e.target.style.backgroundColor = '#4A1F7A'}
                   onMouseLeave={(e) => e.target.style.backgroundColor = '#642EAA'}
                 >
-                  Request Call Back
+                  Book Test
                 </button>
-                <p className="text-sm text-gray-500 mt-2 text-center">
+                <p className="text-xs text-gray-500 mt-2 text-center">
                   *All fields are mandatory. Home sample collection charges will be applicable.
                 </p>
               </form>
@@ -1168,6 +1208,19 @@ function Home() {
                 )}
               </div>
             </section>
+
+             <div className="mt-12 bg-gradient-to-r from-purple-500 to-purple-700 rounded-2xl p-8 text-white text-center">
+          <h2 className="text-2xl font-bold mb-4">Need Help Choosing the Right Test?</h2>
+          <p className="text-lg mb-6">Our health advisors are here to help you select the most appropriate tests for your needs.</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button className="bg-white text-logo-vibrant hover:bg-purple-50 px-8 py-3 rounded-lg font-semibold transition-colors">
+              Call Us: +91 8605941731
+            </button>
+            <button className="border-2 border-white text-white hover:bg-white hover:text-logo-vibrant px-8 py-3 rounded-lg font-semibold transition-colors">
+              Request Call Back
+            </button>
+          </div>
+        </div>
 
             {/* Features */}
             <section id="features" className="py-16 bg-white">
